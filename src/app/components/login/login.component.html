@@ -1,0 +1,41 @@
+<div class="d-flex justify-content-center" style="padding-top: 80px;" *ngIf="admin">
+    <div class="card text-center col-sm-6 borde">
+        <div class="card-header borde">
+            Acceso a la plataforma Administrador
+        </div>
+        <div class="card-body">
+            <form (ngSubmit)='ingresar()' #formInicio='ngForm'>
+                <div>
+                    <div class="form-group col-sm-12">
+                        <div class="input-group mb-2 mr-sm-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-user"></i></div>
+                            </div>
+                            <input [ngClass]="{ 'is-invalid': !usuario.valid && usuario.touched }" #usuario='ngModel' [(ngModel)]="admin.usuario" name="usuario" type="text" required="true" class="form-control" placeholder="Usuario">
+                            <div class="invalid-feedback">
+                                Campo requerido
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <div class="input-group mb-2 mr-sm-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-lock"></i></div>
+                            </div>
+                            <input [ngClass]="{ 'is-invalid': !password.valid && password.touched }" #password='ngModel' [(ngModel)]="admin.password" name="password" type="password" required="true" class="form-control" placeholder="Contraseña">
+                            <div class="invalid-feedback">
+                                Campo requerido
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn boton " [disabled]="formInicio.status === 'INVALID'">Ingresar</button>
+                </div>
+
+            </form><br>
+        </div>
+    </div>
+</div>
+<div class="fixed-bottom">
+    <br>
+    <img src="./assets/logos/Pleca-SE-sinlogo.png" width="100%" class="img-fluid" height="10px">
+</div>

@@ -1,0 +1,17 @@
+.line-breaker {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -o-pre-wrap;
+    font-weight: normal;
+    padding: 10px;
+}
+
+.boton {
+    width: 200px !important;
+    background-color: #992A79 !important;
+    color: floralwhite !important;
+}
+
+.borde {
+    border-color: #992A79 !important;
+}

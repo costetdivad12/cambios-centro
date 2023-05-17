@@ -1,0 +1,7 @@
+.container {
+  display: grid;
+  grid-row: inherit;
+  overflow-y: scroll;
+  margin: 15px;
+  padding: 5px;
+}

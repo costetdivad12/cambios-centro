@@ -7,13 +7,17 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { MainContainerComponent } from './main-container/main-container.component';
+import { FilaComponent } from './fila/fila.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AdminComponent,
-    NavbarComponent
+    NavbarComponent,
+    MainContainerComponent,
+    FilaComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,10 @@
-.container {
-  background-color: gray;
+.container-filas {
   margin: 5px;
+  width: inherit;
+  border: 1px black solid;
+  border-radius: 10px;
+}
+
+tr {
+  background-color: gray;
 }

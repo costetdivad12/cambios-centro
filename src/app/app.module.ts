@@ -9,6 +9,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MainContainerComponent } from './main-container/main-container.component';
 import { FilaComponent } from './fila/fila.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -17,15 +18,16 @@ import { FilaComponent } from './fila/fila.component';
     AdminComponent,
     NavbarComponent,
     MainContainerComponent,
-    FilaComponent
+    FilaComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataTablesModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,7 +1,7 @@
-.container {
-  display: grid;
-  grid-row: inherit;
+.fila {
+  display: flex;
   overflow-y: scroll;
+  width: 99%;
   margin: 15px;
   padding: 5px;
 }

@@ -11,7 +11,10 @@ export class FilaComponent implements OnInit {
 
   ngOnInit(): void {
     this.dtOptions = {
-      data: [{ id: 1, firstName: 'Horacio', lastName: 'Fernandez' }],
+      data: [
+        { id: 1, firstName: 'Horacio', lastName: 'Fernandez' },
+        { id: 2, firstName: 'Abc', lastName: 'zyx' },
+      ],
       columns: [
         {
           title: 'ID',

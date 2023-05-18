@@ -11,7 +11,7 @@ export class FilaComponent implements OnInit {
 
   ngOnInit(): void {
     this.dtOptions = {
-      ajax: 'data/data.json',
+      data: [{ id: 1, firstName: 'Horacio', lastName: 'Fernandez' }],
       columns: [
         {
           title: 'ID',

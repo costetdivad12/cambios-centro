@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilaComponent implements OnInit {
   constructor() {}
-  dtOptions: DataTables.Settings = {};
+  dtOptions: any = {};
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -15,6 +15,7 @@ export class FilaComponent implements OnInit {
         { id: 1, firstName: 'Horacio', lastName: 'Fernandez' },
         { id: 2, firstName: 'Abc', lastName: 'zyx' },
       ],
+
       columns: [
         {
           title: 'ID',
@@ -27,8 +28,10 @@ export class FilaComponent implements OnInit {
         {
           title: 'Last name',
           data: 'lastName',
+          class: 'none',
         },
       ],
+      responsive: true,
     };
   }
 }

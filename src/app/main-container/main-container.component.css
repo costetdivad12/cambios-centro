@@ -5,3 +5,13 @@
   margin: 15px;
   padding: 5px;
 }
+
+.main-container {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+}
+
+.map-container {
+  display: flex;
+  height: 90vh;
+}

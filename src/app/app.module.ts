@@ -10,6 +10,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MainContainerComponent } from './main-container/main-container.component';
 import { FilaComponent } from './fila/fila.component';
 import { DataTablesModule } from 'angular-datatables';
+import { MapaComponent } from './components/mapa/mapa.component';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { DataTablesModule } from 'angular-datatables';
     NavbarComponent,
     MainContainerComponent,
     FilaComponent,
+    MapaComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +29,7 @@ import { DataTablesModule } from 'angular-datatables';
     FormsModule,
     ReactiveFormsModule,
     DataTablesModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

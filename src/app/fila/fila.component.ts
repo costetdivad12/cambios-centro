@@ -9,6 +9,9 @@ export class FilaComponent implements OnInit {
   constructor() {}
   dtOptions: any = {};
 
+  helloWorld() {
+    console.log('first');
+  }
   ngOnInit(): void {
     this.dtOptions = {
       data: [
@@ -257,6 +260,7 @@ export class FilaComponent implements OnInit {
         {
           title: 'Calle',
           data: 'vialidad_principal',
+          class: 'none',
         },
         {
           title: 'Municipio',
@@ -265,6 +269,12 @@ export class FilaComponent implements OnInit {
         {
           title: 'Categoria',
           data: 'categoria',
+        },
+        {
+          title: 'Opciones',
+          data: null,
+          defaultContent: `<button type="button" class="btn btn-primary">Boton a</button>`,
+          helloWorld: console.log('asdasd'),
         },
         {
           title: 'Ciudad',

@@ -9,8 +9,8 @@ export class FilaComponent implements OnInit {
   constructor() {}
   dtOptions: any = {};
 
-  helloWorld() {
-    console.log('first');
+  helloWorld(data) {
+    console.log('first', data);
   }
   ngOnInit(): void {
     this.dtOptions = {
@@ -273,8 +273,7 @@ export class FilaComponent implements OnInit {
         {
           title: 'Opciones',
           data: null,
-          defaultContent: `<button type="button" class="btn btn-primary">Boton a</button>`,
-          helloWorld: console.log('asdasd'),
+          defaultContent: `<button id="btnRegistrarCambio" name="btnRegistrarCambio" type="button" class="btn btn-primary">Boton a</button>`,
         },
         {
           title: 'Ciudad',
@@ -298,6 +297,22 @@ export class FilaComponent implements OnInit {
         },
       ],
       responsive: true,
+      rowCallback: (row, data: any[] | Object, index: number) => {
+        const self = this;
+        // Unbind first in order to avoid any duplicate handler
+        // (see https://github.com/l-lin/angular-datatables/issues/87)
+        const { cells } = row;
+        for (let i = 0; i < cells.length; i++) {
+          if (cells[i].children.length > 0) {
+            $('#btnRegistrarCambio', row).off('click');
+            $('#btnRegistrarCambio', row).on('click', () => {
+              self.helloWorld(data);
+            });
+          }
+        }
+
+        return row;
+      },
     };
   }
 }

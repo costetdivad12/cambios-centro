@@ -1,10 +1,13 @@
 .container-filas {
   margin: 5px;
   width: inherit;
-  border: 1px black solid;
-  border-radius: 10px;
+  display: block;
+  overflow: auto;
+  max-height: 85vh;
 }
 
-tr {
-  background-color: gray;
+td{
+  text-align: center;
+  vertical-align: middle;
 }
+

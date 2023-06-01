@@ -11,6 +11,7 @@ import { MainContainerComponent } from './main-container/main-container.componen
 import { FilaComponent } from './fila/fila.component';
 import { DataTablesModule } from 'angular-datatables';
 import { MapaComponent } from './components/mapa/mapa.component';
+import { ListaBolsaComponent } from './lista-bolsa/lista-bolsa.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { MapaComponent } from './components/mapa/mapa.component';
     MainContainerComponent,
     FilaComponent,
     MapaComponent,
+    ListaBolsaComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-fila',
@@ -9,8 +10,282 @@ export class FilaComponent implements OnInit {
   constructor() {}
   dtOptions: any = {};
 
-  helloWorld() {
-    console.log('first');
+  tableArray = [
+    {
+      idBolsa: 1,
+      horasTotales: 45,
+      plazas: [
+        {
+          plaza: 'abc',
+          asignatura: 'Matematicas',
+          categoria: 'E0722',
+          horas: '15',
+          CCT: '17DPR0001A',
+          nombreCT: 'Nombre escuela largo',
+          municipio: 'Cuernavaca',
+        },
+        {
+          plaza: 'abc',
+          asignatura: 'Matematicas',
+          categoria: 'E0722',
+          horas: '15',
+          CCT: '17DPR1070B',
+          nombreCT: 'Nombre escuela largo',
+          municipio: 'Jiutepec',
+        },
+      ],
+    },
+    {
+      idBolsa: 1,
+      horasTotales: 45,
+      plazas: [
+        {
+          plaza: 'abc',
+          asignatura: 'Matematicas',
+          categoria: 'E0722',
+          horas: '15',
+          CCT: '17DPR0001A',
+          nombreCT: 'Nombre escuela largo',
+          municipio: 'Cuernavaca',
+        },
+      ],
+    },
+    {
+      idBolsa: 1,
+      horasTotales: 45,
+      plazas: [
+        {
+          plaza: 'abc',
+          asignatura: 'Matematicas',
+          categoria: 'E0722',
+          horas: '15',
+          CCT: '17DPR0001A',
+          nombreCT: 'Nombre escuela largo',
+          municipio: 'Cuernavaca',
+        },
+        {
+          plaza: 'abc',
+          asignatura: 'Matematicas',
+          categoria: 'E0722',
+          horas: '15',
+          CCT: '17DPR1070B',
+          nombreCT: 'Nombre escuela largo',
+          municipio: 'Jiutepec',
+        },
+        {
+          plaza: 'abc',
+          asignatura: 'Matematicas',
+          categoria: 'E0722',
+          horas: '15',
+          CCT: '17DPR0001A',
+          nombreCT: 'Nombre escuela largo',
+          municipio: 'Cuernavaca',
+        },
+      ],
+    },
+    {
+      idBolsa: 1,
+      horasTotales: 45,
+      plazas: [
+        {
+          plaza: 'abc',
+          asignatura: 'Matematicas',
+          categoria: 'E0722',
+          horas: '15',
+          CCT: '17DPR0001A',
+          nombreCT: 'Nombre escuela largo',
+          municipio: 'Cuernavaca',
+        },
+        {
+          plaza: 'abc',
+          asignatura: 'Matematicas',
+          categoria: 'E0722',
+          horas: '15',
+          CCT: '17DPR1070B',
+          nombreCT: 'Nombre escuela largo',
+          municipio: 'Jiutepec',
+        },
+        {
+          plaza: 'abc',
+          asignatura: 'Matematicas',
+          categoria: 'E0722',
+          horas: '15',
+          CCT: '17DPR0001A',
+          nombreCT: 'Nombre escuela largo',
+          municipio: 'Cuernavaca',
+        },
+      ],
+    },
+    {
+      idBolsa: 1,
+      horasTotales: 45,
+      plazas: [
+        {
+          plaza: 'abc',
+          asignatura: 'Matematicas',
+          categoria: 'E0722',
+          horas: '15',
+          CCT: '17DPR0001A',
+          nombreCT: 'Nombre escuela largo',
+          municipio: 'Cuernavaca',
+        },
+        {
+          plaza: 'abc',
+          asignatura: 'Matematicas',
+          categoria: 'E0722',
+          horas: '15',
+          CCT: '17DPR1070B',
+          nombreCT: 'Nombre escuela largo',
+          municipio: 'Jiutepec',
+        },
+        {
+          plaza: 'abc',
+          asignatura: 'Matematicas',
+          categoria: 'E0722',
+          horas: '15',
+          CCT: '17DPR0001A',
+          nombreCT: 'Nombre escuela largo',
+          municipio: 'Cuernavaca',
+        },
+      ],
+    },
+    {
+      idBolsa: 1,
+      horasTotales: 45,
+      plazas: [
+        {
+          plaza: 'abc',
+          asignatura: 'Matematicas',
+          categoria: 'E0722',
+          horas: '15',
+          CCT: '17DPR0001A',
+          nombreCT: 'Nombre escuela largo',
+          municipio: 'Cuernavaca',
+        },
+        {
+          plaza: 'abc',
+          asignatura: 'Matematicas',
+          categoria: 'E0722',
+          horas: '15',
+          CCT: '17DPR1070B',
+          nombreCT: 'Nombre escuela largo',
+          municipio: 'Jiutepec',
+        },
+        {
+          plaza: 'abc',
+          asignatura: 'Matematicas',
+          categoria: 'E0722',
+          horas: '15',
+          CCT: '17DPR0001A',
+          nombreCT: 'Nombre escuela largo',
+          municipio: 'Cuernavaca',
+        },
+      ],
+    },
+    {
+      idBolsa: 1,
+      horasTotales: 45,
+      plazas: [
+        {
+          plaza: 'abc',
+          asignatura: 'Matematicas',
+          categoria: 'E0722',
+          horas: '15',
+          CCT: '17DPR0001A',
+          nombreCT: 'Nombre escuela largo',
+          municipio: 'Cuernavaca',
+        },
+        {
+          plaza: 'abc',
+          asignatura: 'Matematicas',
+          categoria: 'E0722',
+          horas: '15',
+          CCT: '17DPR1070B',
+          nombreCT: 'Nombre escuela largo',
+          municipio: 'Jiutepec',
+        },
+        {
+          plaza: 'abc',
+          asignatura: 'Matematicas',
+          categoria: 'E0722',
+          horas: '15',
+          CCT: '17DPR0001A',
+          nombreCT: 'Nombre escuela largo',
+          municipio: 'Cuernavaca',
+        },
+      ],
+    },
+    {
+      idBolsa: 1,
+      horasTotales: 45,
+      plazas: [
+        {
+          plaza: 'abc',
+          asignatura: 'Matematicas',
+          categoria: 'E0722',
+          horas: '15',
+          CCT: '17DPR0001A',
+          nombreCT: 'Nombre escuela largo',
+          municipio: 'Cuernavaca',
+        },
+        {
+          plaza: 'abc',
+          asignatura: 'Matematicas',
+          categoria: 'E0722',
+          horas: '15',
+          CCT: '17DPR1070B',
+          nombreCT: 'Nombre escuela largo',
+          municipio: 'Jiutepec',
+        },
+        {
+          plaza: 'abc',
+          asignatura: 'Matematicas',
+          categoria: 'E0722',
+          horas: '15',
+          CCT: '17DPR0001A',
+          nombreCT: 'Nombre escuela largo',
+          municipio: 'Cuernavaca',
+        },
+      ],
+    },
+  ];
+
+  registrarMovimiento(data) {
+    const {
+      CV_CCT,
+      vialidad_principal: calle,
+      colonia,
+      municipio,
+      ciudad,
+    } = data;
+    Swal.fire({
+      title: `Confirmar movimiento`,
+      text: `¿Está seguro de registrar movimiento al CT: ${CV_CCT}, ubicado en ${colonia}, ${calle}, ${ciudad}, ${municipio}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      showLoaderOnConfirm: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, registrar',
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      //https://sweetalert2.github.io/#examples AJAX request example
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Movimiento guardado',
+          'El movimiento fue registrado correctamente.',
+          'success'
+        );
+      }
+      if (result.isDenied) {
+        Swal.fire(
+          'Movimiento denegado',
+          'Ocurrio un error al intentar guardar el movimiento',
+          'error'
+        );
+      }
+    });
   }
   ngOnInit(): void {
     this.dtOptions = {
@@ -25,6 +300,8 @@ export class FilaComponent implements OnInit {
           colonia: 'colonia a',
           cp: '62001',
           plazas: ['plaza 1', 'plaza 2'],
+          idInscrito: Math.floor(Math.random() * (100 - 1 + 1) + 1),
+          idBolsa: Math.floor(Math.random() * (100 - 1 + 1) + 1),
         },
         {
           CV_CCT: '17USU0019W',
@@ -36,6 +313,8 @@ export class FilaComponent implements OnInit {
           colonia: 'colonia b',
           cp: '62002',
           plazas: ['plaza 1', 'plaza 2'],
+          idInscrito: Math.floor(Math.random() * (100 - 1 + 1) + 1),
+          idBolsa: Math.floor(Math.random() * (100 - 1 + 1) + 1),
         },
         {
           CV_CCT: '17DBA0012Z',
@@ -47,6 +326,8 @@ export class FilaComponent implements OnInit {
           colonia: 'colonia c',
           cp: '62003',
           plazas: ['plaza 1', 'plaza 2'],
+          idInscrito: Math.floor(Math.random() * (100 - 1 + 1) + 1),
+          idBolsa: Math.floor(Math.random() * (100 - 1 + 1) + 1),
         },
         {
           CV_CCT: '17DBA0012Z',
@@ -58,6 +339,8 @@ export class FilaComponent implements OnInit {
           colonia: 'colonia d',
           cp: '62004',
           plazas: ['plaza 1', 'plaza 2'],
+          idInscrito: Math.floor(Math.random() * (100 - 1 + 1) + 1),
+          idBolsa: Math.floor(Math.random() * (100 - 1 + 1) + 1),
         },
         {
           CV_CCT: '17DBA0012Z',
@@ -69,6 +352,8 @@ export class FilaComponent implements OnInit {
           colonia: 'colonia e',
           cp: '62005',
           plazas: ['plaza 1', 'plaza 2'],
+          idInscrito: Math.floor(Math.random() * (100 - 1 + 1) + 1),
+          idBolsa: Math.floor(Math.random() * (100 - 1 + 1) + 1),
         },
         {
           CV_CCT: '17DBA0012Z',
@@ -80,6 +365,8 @@ export class FilaComponent implements OnInit {
           colonia: 'colonia f',
           cp: '62006',
           plazas: ['plaza 1', 'plaza 2'],
+          idInscrito: Math.floor(Math.random() * (100 - 1 + 1) + 1),
+          idBolsa: Math.floor(Math.random() * (100 - 1 + 1) + 1),
         },
         {
           CV_CCT: '17DBA0012Z',
@@ -91,6 +378,8 @@ export class FilaComponent implements OnInit {
           colonia: 'colonia g',
           cp: '62007',
           plazas: ['plaza 1', 'plaza 2'],
+          idInscrito: Math.floor(Math.random() * (100 - 1 + 1) + 1),
+          idBolsa: Math.floor(Math.random() * (100 - 1 + 1) + 1),
         },
         {
           CV_CCT: '17DBA0012Z',
@@ -102,6 +391,8 @@ export class FilaComponent implements OnInit {
           colonia: 'colonia h',
           cp: '62008',
           plazas: ['plaza 1', 'plaza 2'],
+          idInscrito: Math.floor(Math.random() * (100 - 1 + 1) + 1),
+          idBolsa: Math.floor(Math.random() * (100 - 1 + 1) + 1),
         },
         {
           CV_CCT: '17DBA0012Z',
@@ -113,6 +404,8 @@ export class FilaComponent implements OnInit {
           colonia: 'colonia i',
           cp: '62009',
           plazas: ['plaza 1', 'plaza 2'],
+          idInscrito: Math.floor(Math.random() * (100 - 1 + 1) + 1),
+          idBolsa: Math.floor(Math.random() * (100 - 1 + 1) + 1),
         },
         {
           CV_CCT: '17DBA0012Z',
@@ -124,6 +417,8 @@ export class FilaComponent implements OnInit {
           colonia: 'colonia j',
           cp: '62010',
           plazas: ['plaza 1', 'plaza 2'],
+          idInscrito: Math.floor(Math.random() * (100 - 1 + 1) + 1),
+          idBolsa: Math.floor(Math.random() * (100 - 1 + 1) + 1),
         },
         {
           CV_CCT: '17DBA0012Z',
@@ -135,6 +430,8 @@ export class FilaComponent implements OnInit {
           colonia: 'colonia k',
           cp: '62011',
           plazas: ['plaza 1', 'plaza 2'],
+          idInscrito: Math.floor(Math.random() * (100 - 1 + 1) + 1),
+          idBolsa: Math.floor(Math.random() * (100 - 1 + 1) + 1),
         },
         {
           CV_CCT: '17DBA0012Z',
@@ -146,6 +443,8 @@ export class FilaComponent implements OnInit {
           colonia: 'colonia l',
           cp: '62012',
           plazas: ['plaza 1', 'plaza 2'],
+          idInscrito: Math.floor(Math.random() * (100 - 1 + 1) + 1),
+          idBolsa: Math.floor(Math.random() * (100 - 1 + 1) + 1),
         },
         {
           CV_CCT: '17DBA0012Z',
@@ -157,6 +456,8 @@ export class FilaComponent implements OnInit {
           colonia: 'colonia m',
           cp: '62013',
           plazas: ['plaza 1', 'plaza 2'],
+          idInscrito: Math.floor(Math.random() * (100 - 1 + 1) + 1),
+          idBolsa: Math.floor(Math.random() * (100 - 1 + 1) + 1),
         },
         {
           CV_CCT: '17DBA0012Z',
@@ -168,6 +469,8 @@ export class FilaComponent implements OnInit {
           colonia: 'colonia n',
           cp: '62014',
           plazas: ['plaza 1', 'plaza 2'],
+          idInscrito: Math.floor(Math.random() * (100 - 1 + 1) + 1),
+          idBolsa: Math.floor(Math.random() * (100 - 1 + 1) + 1),
         },
         {
           CV_CCT: '17DBA0012Z',
@@ -179,6 +482,8 @@ export class FilaComponent implements OnInit {
           colonia: 'colonia o',
           cp: '62015',
           plazas: ['plaza 1', 'plaza 2'],
+          idInscrito: Math.floor(Math.random() * (100 - 1 + 1) + 1),
+          idBolsa: Math.floor(Math.random() * (100 - 1 + 1) + 1),
         },
         {
           CV_CCT: '17DBA0012Z',
@@ -190,6 +495,8 @@ export class FilaComponent implements OnInit {
           colonia: 'colonia p',
           cp: '62016',
           plazas: ['plaza 1', 'plaza 2'],
+          idInscrito: Math.floor(Math.random() * (100 - 1 + 1) + 1),
+          idBolsa: Math.floor(Math.random() * (100 - 1 + 1) + 1),
         },
         {
           CV_CCT: '17DBA0012Z',
@@ -201,6 +508,8 @@ export class FilaComponent implements OnInit {
           colonia: 'colonia q',
           cp: '62017',
           plazas: ['plaza 1', 'plaza 2'],
+          idInscrito: Math.floor(Math.random() * (100 - 1 + 1) + 1),
+          idBolsa: Math.floor(Math.random() * (100 - 1 + 1) + 1),
         },
         {
           CV_CCT: '17DBA0012Z',
@@ -212,6 +521,8 @@ export class FilaComponent implements OnInit {
           colonia: 'colonia r',
           cp: '62018',
           plazas: ['plaza 1', 'plaza 2'],
+          idInscrito: Math.floor(Math.random() * (100 - 1 + 1) + 1),
+          idBolsa: Math.floor(Math.random() * (100 - 1 + 1) + 1),
         },
         {
           CV_CCT: '17DBA0012Z',
@@ -223,6 +534,8 @@ export class FilaComponent implements OnInit {
           colonia: 'colonia s',
           cp: '62019',
           plazas: ['plaza 1', 'plaza 2'],
+          idInscrito: Math.floor(Math.random() * (100 - 1 + 1) + 1),
+          idBolsa: Math.floor(Math.random() * (100 - 1 + 1) + 1),
         },
         {
           CV_CCT: '17DBA0012Z',
@@ -234,6 +547,8 @@ export class FilaComponent implements OnInit {
           colonia: 'colonia t',
           cp: '62020',
           plazas: ['plaza 1', 'plaza 2'],
+          idInscrito: Math.floor(Math.random() * (100 - 1 + 1) + 1),
+          idBolsa: Math.floor(Math.random() * (100 - 1 + 1) + 1),
         },
         {
           CV_CCT: '17DBA0012Z',
@@ -245,6 +560,8 @@ export class FilaComponent implements OnInit {
           colonia: 'colonia u',
           cp: '62021',
           plazas: ['plaza 1', 'plaza 2'],
+          idInscrito: Math.floor(Math.random() * (100 - 1 + 1) + 1),
+          idBolsa: Math.floor(Math.random() * (100 - 1 + 1) + 1),
         },
       ],
 
@@ -273,8 +590,7 @@ export class FilaComponent implements OnInit {
         {
           title: 'Opciones',
           data: null,
-          defaultContent: `<button type="button" class="btn btn-primary">Boton a</button>`,
-          helloWorld: console.log('asdasd'),
+          defaultContent: `<button id="btnRegistrarCambio" name="btnRegistrarCambio" type="button" class="btn btn-primary">Boton a</button>`,
         },
         {
           title: 'Ciudad',
@@ -298,6 +614,22 @@ export class FilaComponent implements OnInit {
         },
       ],
       responsive: true,
+      rowCallback: (row, data: any[] | Object, index: number) => {
+        const self = this;
+        // Unbind first in order to avoid any duplicate handler
+        // (see https://github.com/l-lin/angular-datatables/issues/87)
+        const { cells } = row;
+        for (let i = 0; i < cells.length; i++) {
+          if (cells[i].children.length > 0) {
+            $('#btnRegistrarCambio', row).off('click');
+            $('#btnRegistrarCambio', row).on('click', () => {
+              self.registrarMovimiento(data);
+            });
+          }
+        }
+
+        return row;
+      },
     };
   }
 }

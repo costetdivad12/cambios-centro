@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { google } from "google-maps";
-import { map } from 'rxjs/operators';
+
 
 
 @Component({
@@ -81,30 +81,22 @@ export class MapaComponent implements OnInit {
       });
     
       marker.addListener("click", ()=>{
-        marker.setAnimation(google.maps.Animation.BOUNCE);
+        // marker.setAnimation(google.maps.Animation.BOUNCE);
         infowindow.open(this.map,marker);
+        
       });
-
+    
      
     
       
-      function toggleBounce() {
-        if (marker.getAnimation() !== null) {
-          marker.setAnimation(null);
-        } else {
-          marker.setAnimation(google.maps.Animation.BOUNCE);
-        }
-
-     }
+     
 
   }
 
- 
+    
   }
   
 
 }
-function toggleBounce() {
-  throw new Error('Function not implemented.');
-}
+
 

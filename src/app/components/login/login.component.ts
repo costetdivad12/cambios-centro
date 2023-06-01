@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   
   ngOnInit(): void {
     localStorage.removeItem('sesionAdmin');
-    localStorage.removeItem('sesionSubs');
+   
   }
 
   ingresar(){
@@ -34,10 +34,6 @@ export class LoginComponent implements OnInit {
     Swal.close();
     localStorage.setItem('sesionAdmin' , '1' );
     this.router.navigateByUrl('homeAdmin');
-  }else if(this.admin.usuario === 'mesaayuda' && this.admin.password==='mesa2020'){
-    Swal.close();
-    localStorage.setItem('sesionSubs' , '1' );
-    this.router.navigateByUrl('homeMesa');
   }else{
     Swal.fire({
       title: 'Atención',

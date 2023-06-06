@@ -251,17 +251,26 @@ export class FilaComponent implements OnInit {
   ];
 
   registrarMovimiento(data) {
-    const {
-      CV_CCT,
-      vialidad_principal: calle,
-      colonia,
-      municipio,
-      ciudad,
-    } = data;
+    console.log(data);
+    const cantidadPlazasBolsa = data.plazas.length;
+    const asignaturaBolsa = data.plazas[0].asignatura;
+    const categoriaBolsa = data.plazas[0].categoria;
+    const { horasTotalesBolsa: horasTotales } = data;
     Swal.fire({
       title: `Confirmar movimiento`,
-      text: `¿Está seguro de registrar movimiento al CT: ${CV_CCT}, ubicado en ${colonia}, ${calle}, ${ciudad}, ${municipio}?`,
+      html: `<h6>¿Está seguro de registrar el siguiente movimiento de cambio de CT?</h6>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Plazas de Inscrito</th>
+            <th>Plazas de Bolsa</th>
+            <th>Cantidad CT de Inscrito</th>
+            <th>Cantidad CT de Bolsa</th>
+          </tr>
+        </thead>
+      </table>`,
       icon: 'warning',
+      customClass: { container: 'swal-modal-size' },
       showCancelButton: true,
       showLoaderOnConfirm: true,
       confirmButtonColor: '#3085d6',

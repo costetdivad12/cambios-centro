@@ -11,3 +11,7 @@ td{
   vertical-align: middle;
 }
 
+.swal-modal-size{
+  /* width:50em !important; */
+  background-color: red;
+}

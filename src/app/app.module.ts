@@ -12,6 +12,7 @@ import { FilaComponent } from './fila/fila.component';
 import { DataTablesModule } from 'angular-datatables';
 import { MapaComponent } from './components/mapa/mapa.component';
 import { ListaBolsaComponent } from './lista-bolsa/lista-bolsa.component';
+import { ListainscritosComponent } from './components/listainscritos/listainscritos.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { ListaBolsaComponent } from './lista-bolsa/lista-bolsa.component';
     FilaComponent,
     MapaComponent,
     ListaBolsaComponent,
+    ListainscritosComponent,
   ],
   imports: [
     BrowserModule,

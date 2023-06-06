@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   
   ngOnInit(): void {
     localStorage.removeItem('sesionAdmin');
-    localStorage.removeItem('sesionSubs');
+    localStorage.removeItem('sesionLista');
   }
 
   ingresar(){
@@ -30,14 +30,14 @@ export class LoginComponent implements OnInit {
     Swal.showLoading();
   
   
-  if( this.admin.usuario === 'admin' && this.admin.password==='iebem2022' ){
+  if( this.admin.usuario === 'admin' && this.admin.password==='iebem2023' ){
     Swal.close();
     localStorage.setItem('sesionAdmin' , '1' );
     this.router.navigateByUrl('homeAdmin');
-  }else if(this.admin.usuario === 'mesaayuda' && this.admin.password==='mesa2020'){
+  }else if( this.admin.usuario === 'lista' && this.admin.password==='iebem2023' ){
     Swal.close();
-    localStorage.setItem('sesionSubs' , '1' );
-    this.router.navigateByUrl('homeMesa');
+    localStorage.setItem('sesionLista' , '1' );
+    this.router.navigateByUrl('homeLista');
   }else{
     Swal.fire({
       title: 'Atención',

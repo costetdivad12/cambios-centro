@@ -70,22 +70,27 @@ export class MapaComponent implements OnInit {
       const infowindow = new google.maps.InfoWindow({
         content: title,
       });
-
-      marker.addListener('click', () => {
+    
+      marker.addListener("click", ()=>{
         marker.setAnimation(google.maps.Animation.BOUNCE);
-        infowindow.open(this.map, marker);
+        infowindow.open(this.map,marker);
       });
 
+     
+    
+      
       function toggleBounce() {
         if (marker.getAnimation() !== null) {
           marker.setAnimation(null);
         } else {
           marker.setAnimation(google.maps.Animation.BOUNCE);
         }
-      }
-    }
+
+     }
+
+  }
+
+ 
   }
 }
-function toggleBounce() {
-  throw new Error('Function not implemented.');
-}
+

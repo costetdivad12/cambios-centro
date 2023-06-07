@@ -1,6 +1,55 @@
-<div class="main-container">
+<div class="container">
     <div class="text-center">
-      <h1>Listado Inscritos</h1>
-      <h2></h2>
+      <h1>Listado participantes inscritos</h1>
+      <div class="lista-bolsa">
+        <div>
+          <select #nivel class="form-select" name="select-nivel" id="select-nivel" (change)="validar(nivel.value)">
+            <option value="">SELECCIONE UN NIVEL EDUCATIVO</option>
+            <option value="1">EDUCACIÓN PREESCOLAR</option>
+            <option value="2">EDUCACIÓN PRIMARIA</option>
+            <option value="3">SECUNDARIAS</option>
+            <option value="4">SECUNDARIAS TÉCNICAS</option>
+            <option value="5">EDUCACIÓN ESPECIAL</option>
+            <option value="6">EDUCACIÓN INDIGENA</option>
+            <option value="7">EDUCACIÓN PARA ADULTOS</option>
+            <option value="8">TELESECUNDARIAS</option>
+            <option value="9">EDUCACIÓN FÍSICA</option>
+            <option value="11">EDUCACIÓN INICIAL</option>
+          </select>
+<hr style="border-color: #992A79 !important; border-width:4px;">
+    <br>      
+          <h3>Lista de Participantes Inscritos</h3>
+          <hr />
+        </div>
+        <div #tableContainer id="tableContainer" class="tableContainer">
+          <table class="table table-responsive table-dark " >
+            <thead>
+              <tr>
+                <th scope="col">CURP</th>
+                <th scope="col">RFC</th>
+                <th scope="col">NOMBRE COMPLETO</th>
+                <th scope="col">NUMERO PRELACIÓN</th>
+                <th scope="col">DESCRIPCIÓN CATEGORIA</th>
+                <th scope="col">ESTATUS</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr    *ngFor="let listaInscritos of datos">
+                <td>{{listaInscritos.curp}}</td>
+                <td>{{listaInscritos.rfc}}</td>
+                <td>{{listaInscritos.nombre  }} {{listaInscritos.apellidoPaterno}} {{listaInscritos.apellidoMaterno}}</td>
+                <td>{{listaInscritos.numeroPrelacion}}</td>
+                <td>{{listaInscritos.plazas[0].descripcionCategoria}}</td>
+                <td *ngIf="listaInscritos.conMovimiento==false && listaInscritos.rechazo==false">Disponible</td>        
+                 <td *ngIf="listaInscritos.conMovimiento==true" class="conmo"></td>
+                 <td *ngIf="listaInscritos.rechazo==true" class="recha"></td>
+              </tr>
+             
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
     </div>
 </div>

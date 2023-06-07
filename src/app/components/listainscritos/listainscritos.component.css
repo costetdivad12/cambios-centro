@@ -2,3 +2,10 @@
     display: grid;
     grid-template-columns: 3fr 2fr;
   }
+
+  .conmo{
+    background-color: #099b10;
+  }
+  .recha{
+    background-color: #ea2e2e;
+  }

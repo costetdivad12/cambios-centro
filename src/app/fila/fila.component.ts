@@ -250,12 +250,13 @@ export class FilaComponent implements OnInit {
     },
   ];
 
-  registrarMovimiento(data) {
+  async registrarMovimiento(data) {
     console.log(data);
     const cantidadPlazasBolsa = data.plazas.length;
     const asignaturaBolsa = data.plazas[0].asignatura;
     const categoriaBolsa = data.plazas[0].categoria;
     const { horasTotalesBolsa: horasTotales } = data;
+
     Swal.fire({
       title: `Confirmar movimiento`,
       html: `<h6>¿Está seguro de registrar el siguiente movimiento de cambio de CT?</h6>
@@ -268,14 +269,26 @@ export class FilaComponent implements OnInit {
             <th>Cantidad CT de Bolsa</th>
           </tr>
         </thead>
+        <tbody>
+          <tr>
+            <td style="text-align: center; vertical-align: middle;">071713E034100100009</td>
+            <td style="text-align: center; vertical-align: middle;" rowspan="2">071711E012100300006</td>
+            <td style="text-align: center; vertical-align: middle;" rowspan="2">2 CTs</td>
+            <td style="text-align: center; vertical-align: middle;" rowspan="2">1 CT</td>
+          </tr>
+          <tr>
+            <td style="text-align: center; vertical-align: middle;">071713E034100100009</td>
+          </tr>
+        </tbody>
       </table>`,
       icon: 'warning',
-      customClass: { container: 'swal-modal-size' },
+      width: '65em',
       showCancelButton: true,
       showLoaderOnConfirm: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Si, registrar',
+      cancelButtonText: 'Cancelar',
       allowEscapeKey: false,
       allowOutsideClick: false,
       //https://sweetalert2.github.io/#examples AJAX request example

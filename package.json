@@ -17,6 +17,7 @@
     "@angular/core": "~11.1.2",
     "@angular/forms": "~11.1.2",
     "@angular/google-maps": "^16.0.1",
+    "@angular/http": "^7.2.16",
     "@angular/platform-browser": "~11.1.2",
     "@angular/platform-browser-dynamic": "~11.1.2",
     "@angular/router": "~11.1.2",

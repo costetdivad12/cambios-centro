@@ -6,8 +6,12 @@
   max-height: 85vh;
 }
 
-td{
+td {
   text-align: center;
   vertical-align: middle;
 }
 
+.swal-modal-size {
+  width: 950px !important;
+  background-color: red;
+}

@@ -27,9 +27,16 @@
             <td>{{ plaza.nombreCT }}</td>
             <td>{{ plaza.municipio }}</td>
             <td>{{ plaza.horas }}</td>
-            <td>{{ item.horasTotales }}</td>
             <td *ngIf="i === 0" [attr.rowspan]="item.plazas.length">
-              <button class="btn btn-primary">Registrar</button>
+              {{ item.horasTotales }}
+            </td>
+            <td *ngIf="i === 0" [attr.rowspan]="item.plazas.length">
+              <button
+                class="btn btn-primary"
+                (click)="registrarMovimiento(item)"
+              >
+                Registrar
+              </button>
             </td>
           </tr>
         </ng-container>

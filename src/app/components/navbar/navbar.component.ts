@@ -10,18 +10,22 @@ declare var $: any;
 })
 export class NavbarComponent implements OnInit {
   constructor(private service: ServicioService) {}
-  inscritosSinMovimiento: any[] = [];
+  inscritosSinMovimiento: Array<Object> = [];
+  participante: any = {};
+  imprimir(participante) {
+    this.participante = participante;
+    console.log(this.participante);
+  }
 
   refreshSelectPicker() {
     setTimeout(() => {
       $('#participante').selectpicker('refresh');
-    }, 2500);
+    }, 1500);
   }
 
   ngOnInit(): void {
     this.service.getInscritosSinMovimiento().subscribe((resp: any) => {
       this.inscritosSinMovimiento = resp;
-      console.log(resp);
       this.refreshSelectPicker();
     });
   }

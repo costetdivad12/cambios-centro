@@ -23,22 +23,30 @@
         class="container-md"
         style="text-align: center; margin: 0; padding: 0"
       >
-        <h4>ABIGAIL REBOLLEDO OCAMPO</h4>
-        <p><b>CURP: </b>REOA931128MMSBCB08 <b>RFC: </b>REOA931128E53</p>
+        <h4>
+          <b>Nombre:</b> {{ participante.apellidoPaterno }}
+          {{ participante.apellidoMaterno }}
+          {{ participante.nombre }}
+        </h4>
+        <p>
+          <b>CURP: </b>{{ participante.curp }} <b>RFC: </b
+          >{{ participante.rfc }}
+        </p>
         <div class="row">
           <div class="col" style="display: flex; justify-content: center">
             <p><b>Plazas:</b></p>
             <ul style="display: table; margin: 0">
-              <li>071712E028100105123</li>
-              <li>071712E028100105123</li>
-              <li>071712E028100105123</li>
+              <li *ngFor="let plazas of participante.plazas">
+                {{ plazas.plaza }}
+              </li>
             </ul>
           </div>
           <div class="col" style="display: flex; justify-content: center">
             <p><b>CT</b></p>
             <ul style="display: table; margin: 0">
-              <li>17DPR1070B</li>
-              <li>17DPR0001A</li>
+              <li *ngFor="let plazas of participante.plazas">
+                {{ plazas.ct }}
+              </li>
             </ul>
           </div>
         </div>
@@ -46,13 +54,16 @@
       <!-- Search form -->
       <form class="d-flex input-group" style="width: 500px; right: 10px">
         <select
+          name="participante"
+          [(ngModel)]="participante"
           class="form-control selectpicker"
           id="participante"
           data-live-search="true"
+          (change)="imprimir(participante)"
         >
           <option
             *ngFor="let inscrito of inscritosSinMovimiento"
-            [value]="inscrito"
+            [ngValue]="inscrito"
           >
             {{ inscrito.curp }}
           </option>

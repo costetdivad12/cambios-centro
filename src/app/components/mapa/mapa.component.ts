@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { google } from 'google-maps';
+
 
 @Component({
   selector: 'app-mapa',
@@ -8,7 +8,7 @@ import { google } from 'google-maps';
 })
 export class MapaComponent implements OnInit {
   @ViewChild('mapa', { static: true }) mapaElement: ElementRef;
-  googel=google.maps;
+ 
   map: google.maps.Map;
   constructor() {
     
@@ -19,7 +19,7 @@ export class MapaComponent implements OnInit {
   }
 
   cargarMapa( nombre:string,ct:string, lat:any,lng:any) {
-    const latlon = new this.googel.LatLng(
+    const latlon = new google.maps.LatLng(
       18.722644997763087,
       -99.09532312959755
     );
@@ -55,13 +55,13 @@ export class MapaComponent implements OnInit {
     //   map: this.map,
     // });
 
-    this.map = new this.googel.Map(this.mapaElement.nativeElement, mapOpcions);
+    this.map = new google.maps.Map(this.mapaElement.nativeElement, mapOpcions);
     // for (const lugar of lugares) {
       
 
-      const latlog = new this.googel.LatLng(lat, lng);
+      const latlog = new google.maps.LatLng(lat, lng);
 
-      const marker = new this.googel.Marker({
+      const marker = new google.maps.Marker({
         map: this.map,
         animation: google.maps.Animation.DROP,
         position: latlog,
@@ -69,7 +69,7 @@ export class MapaComponent implements OnInit {
 
       const title = '<h4>' + ct + '</h4>' + '<p>' + nombre + '</p>';
 
-      const infowindow = new this.googel.InfoWindow({
+      const infowindow = new google.maps.InfoWindow({
         content: title,
       });
     

@@ -12,6 +12,7 @@ import { FilaComponent } from './fila/fila.component';
 import { MapaComponent } from './components/mapa/mapa.component';
 import { ListaBolsaComponent } from './lista-bolsa/lista-bolsa.component';
 import { ListainscritosComponent } from './components/listainscritos/listainscritos.component';
+import { ListamovimientosComponent } from './components/listamovimientos/listamovimientos.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ListainscritosComponent } from './components/listainscritos/listainscri
     MapaComponent,
     ListaBolsaComponent,
     ListainscritosComponent,
+    ListamovimientosComponent,
   ],
   imports: [
     BrowserModule,

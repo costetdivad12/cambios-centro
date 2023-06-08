@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { interval } from 'rxjs';
+ import { interval } from 'rxjs';
 import { ServicioService } from 'src/app/service/servicio.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Component({
@@ -12,7 +12,10 @@ export class ListainscritosComponent implements OnInit {
   constructor(private service: ServicioService) { }
 
   datos:any[];
+  inter:any;
+  //inter:any;
 
+  tiempo:any;
   ngOnInit(): void {
 
     //       interval(10000).subscribe((val: any) => {
@@ -34,6 +37,7 @@ export class ListainscritosComponent implements OnInit {
 
   validar(nivel: any) {
     
+    
 
     if (nivel == "") {
       Swal.fire({
@@ -44,22 +48,34 @@ export class ListainscritosComponent implements OnInit {
     } else {
       console.log(nivel);
 
-       interval(1000).subscribe((val: any) => {
-
-
-        this.service.getInscritos(nivel).subscribe((resp: any) => {
+      if(this.inter && this.inter!=undefined){
+         this.inter.unsubscribe();
+      }
+      if(!this.datos || this.inter==undefined || this.datos.length==0 ){
+       this.tiempo=1000;
+      }else {
+        this.tiempo=10000; 
+      }
+      
+           
+      this.inter=  interval(this.tiempo).subscribe((val: any) => {
+        console.log(val);
+      
+       this.service.getInscritos(nivel).subscribe((resp: any) => {
           console.log(resp);
 
           this.datos=resp;
+         
+          
 
         });
-
+        
         
       });
-
-
+       
+      
     }
-   
+    
   }
 
 }

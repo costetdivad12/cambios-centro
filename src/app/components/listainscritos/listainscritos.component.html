@@ -22,7 +22,7 @@
           <hr />
         </div>
         <div #tableContainer id="tableContainer" class="tableContainer">
-          <table class="table table-responsive table-dark " >
+          <table class="table table-responsive" >
             <thead>
               <tr>
                 <th scope="col">CURP</th>
@@ -41,9 +41,9 @@
                 <td>{{listaInscritos.nombre  }} {{listaInscritos.apellidoPaterno}} {{listaInscritos.apellidoMaterno}}</td>
                 <td>{{listaInscritos.numeroPrelacion}}</td>
                 <td>{{listaInscritos.plazas[0].descripcionCategoria}}</td>
-                <td *ngIf="listaInscritos.conMovimiento==false && listaInscritos.rechazo==false">Disponible</td>        
-                 <td *ngIf="listaInscritos.conMovimiento==true" class="conmo"></td>
-                 <td *ngIf="listaInscritos.rechazo==true" class="recha"></td>
+                <td *ngIf="listaInscritos.conMovimiento==false && listaInscritos.rechazo==false"><i class="fas fa-circle fa-lg" style="color: #c6cfae;"></i></td>        
+                 <td *ngIf="listaInscritos.conMovimiento==true" ><i class="fas fa-circle fa-lg" style="color: #078158;"></i></td>
+                 <td *ngIf="listaInscritos.rechazo==true" ><i class="fas fa-circle fa-lg" style="color: #ee2105;"></i></td>
               </tr>
              
             </tbody>

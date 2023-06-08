@@ -62,20 +62,20 @@
         </div>
       </div>
       <!-- Search form -->
-      <form class="d-flex input-group" style="width: 500px; right: 10px">
+      <form class="d-flex input-group" style="width: 500px; right: 20px">
         <select
           name="participante"
           [(ngModel)]="participante"
           class="form-control selectpicker"
           id="participante"
           data-live-search="true"
-          (change)="imprimir(participante)"
+          (change)="mostarDatosInscrito(participante)"
         >
           <option
             *ngFor="let inscrito of inscritosSinMovimiento"
             [ngValue]="inscrito"
           >
-            {{ inscrito.curp }}
+            {{ inscrito.rfc }} - {{ inscrito.plazas[0].asignatura }}
           </option>
         </select>
       </form>

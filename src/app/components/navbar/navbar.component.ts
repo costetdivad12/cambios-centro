@@ -12,9 +12,21 @@ export class NavbarComponent implements OnInit {
   constructor(private service: ServicioService) {}
   inscritosSinMovimiento: Array<Object> = [];
   participante: any = {};
-  imprimir(participante) {
+
+  listaBolsaCompatible: Array<Object> = [];
+
+  mostarDatosInscrito(participante) {
     this.participante = participante;
     console.log(this.participante);
+    this.cargarBolsaCompatible(participante.id);
+  }
+
+  cargarBolsaCompatible(idInscrito: number) {
+    this.service
+      .getBolsaCompatibleConInscrito(idInscrito)
+      .subscribe((resp: any) => {
+        this.listaBolsaCompatible = resp;
+      });
   }
 
   refreshSelectPicker() {

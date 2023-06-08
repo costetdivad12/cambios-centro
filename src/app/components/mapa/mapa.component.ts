@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { google } from 'google-maps';
+// import { google } from 'google-maps';
 
 @Component({
   selector: 'app-mapa',
@@ -13,10 +13,10 @@ export class MapaComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.cargarMapa();
+    this.cargarMapa('ESCUELA SECUNDARIA TECNICA NUM. 27','17DST0035Y',18.639465,-99.208196);
   }
 
-  cargarMapa() {
+  cargarMapa( nombre:string,ct:string, lat:any,lng:any) {
     const latlon = new google.maps.LatLng(
       18.722644997763087,
       -99.09532312959755
@@ -54,10 +54,10 @@ export class MapaComponent implements OnInit {
     // });
 
     this.map = new google.maps.Map(this.mapaElement.nativeElement, mapOpcions);
-    for (const lugar of lugares) {
-      console.log(lugar);
+    // for (const lugar of lugares) {
+      
 
-      const latlog = new google.maps.LatLng(lugar.lat, lugar.lng);
+      const latlog = new google.maps.LatLng(lat, lng);
 
       const marker = new google.maps.Marker({
         map: this.map,
@@ -65,7 +65,7 @@ export class MapaComponent implements OnInit {
         position: latlog,
       });
 
-      const title = '<h4>' + lugar.ct + '</h4>' + '<p>' + lugar.nombre + '</p>';
+      const title = '<h4>' + ct + '</h4>' + '<p>' + nombre + '</p>';
 
       const infowindow = new google.maps.InfoWindow({
         content: title,
@@ -92,5 +92,5 @@ export class MapaComponent implements OnInit {
 
  
   }
-}
+
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {  Router } from '@angular/router';
  import { interval } from 'rxjs';
 import { ServicioService } from 'src/app/service/servicio.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
@@ -9,7 +10,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 })
 export class ListainscritosComponent implements OnInit {
 
-  constructor(private service: ServicioService) { }
+  constructor(private service: ServicioService,private router:Router) { }
 
   datos:any[];
   inter:any;
@@ -76,6 +77,11 @@ export class ListainscritosComponent implements OnInit {
       
     }
     
+  }
+
+  cerrar(){
+    this.router.navigateByUrl('login');
+    localStorage.removeItem('sesionLista');
   }
 
 }

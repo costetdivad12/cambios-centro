@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  urlApi:'http://172.16.10.17:8301/'
+  // urlApi:'http://172.16.10.17:8301/'
+
+ urlApi:'https://serviciosweb.iebem.edu.mx:8301/'
 };
 
 /*

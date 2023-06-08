@@ -1,4 +1,12 @@
 <div class="container">
+  <br>
+  <button
+  type="button"
+  class="btn btn-danger"
+  (click)="cerrar()"
+>
+  Cerrar Sesion
+</button>
     <div class="text-center">
       <h1>Listado participantes inscritos</h1>
       <div class="lista-bolsa">
@@ -22,7 +30,7 @@
           <hr />
         </div>
         <div #tableContainer id="tableContainer" class="tableContainer">
-          <table class="table table-responsive" >
+          <table class="table-responsive" >
             <thead>
               <tr>
                 <th scope="col">CURP</th>

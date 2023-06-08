@@ -32,6 +32,16 @@
           <b>CURP: </b>{{ participante.curp }} <b>RFC: </b
           >{{ participante.rfc }}
         </p>
+        <p>
+          <b
+            >Total Horas:
+            {{
+              participante.horasTotales === 0
+                ? "Jornada"
+                : participante.horasTotales
+            }}</b
+          >
+        </p>
         <div class="row">
           <div class="col" style="display: flex; justify-content: center">
             <p><b>Plazas:</b></p>

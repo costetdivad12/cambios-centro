@@ -4,37 +4,27 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 
-
-
-
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ServicioService {
-
   urlApi: string = environment.urlApi;
 
-  constructor(
-    private http: HttpClient,
-    public routers: Router
-  ) {
+  constructor(private http: HttpClient, public routers: Router) {}
 
-   }
-  
-
-
-   getInscritos(valor: number) {
+  getInscritosSinMovimiento() {
     return this.http
-        .get(
-            `${this.urlApi}ccts/inscritos/lista/nivelEducativo/${valor}`
-        )
-        .pipe(
-            map((data) => {
-                return data;
-            })
-        );
-}
+      .get(`${this.urlApi}ccts/inscritos/lista/sinMovimiento`)
+      .pipe(map((data) => data));
+  }
 
-
+  getInscritos(valor: number) {
+    return this.http
+      .get(`${this.urlApi}ccts/inscritos/lista/nivelEducativo/${valor}`)
+      .pipe(
+        map((data) => {
+          return data;
+        })
+      );
+  }
 }

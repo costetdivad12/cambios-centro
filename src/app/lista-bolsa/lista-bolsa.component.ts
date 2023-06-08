@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { element } from 'protractor';
-
+declare var $: any;
 @Component({
   selector: 'app-lista-bolsa',
   templateUrl: './lista-bolsa.component.html',

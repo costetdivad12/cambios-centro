@@ -9,11 +9,9 @@ import { AdminComponent } from './components/admin/admin.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MainContainerComponent } from './main-container/main-container.component';
 import { FilaComponent } from './fila/fila.component';
-import { DataTablesModule } from 'angular-datatables';
 import { MapaComponent } from './components/mapa/mapa.component';
 import { ListaBolsaComponent } from './lista-bolsa/lista-bolsa.component';
 import { ListainscritosComponent } from './components/listainscritos/listainscritos.component';
-
 
 @NgModule({
   declarations: [
@@ -32,8 +30,7 @@ import { ListainscritosComponent } from './components/listainscritos/listainscri
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    DataTablesModule,HttpClientModule,
-    
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

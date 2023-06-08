@@ -50,12 +50,12 @@
           id="participante"
           data-live-search="true"
         >
-          <option value="">CURP de Inscrito</option>
-          <option value="99">SACA971002MMSVRB00</option>
-          <option value="99">NAMA581013HMSVRB02</option>
-          <option value="99">RAAA880717MMSMRB01</option>
-          <option value="99">BAOA910325MMSRSD06</option>
-          <option value="99">HERA920723HMSRMD19</option>
+          <option
+            *ngFor="let inscrito of inscritosSinMovimiento"
+            [value]="inscrito"
+          >
+            {{ inscrito.curp }}
+          </option>
         </select>
       </form>
     </div>

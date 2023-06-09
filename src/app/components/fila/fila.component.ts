@@ -15,8 +15,19 @@ export class FilaComponent implements OnInit {
 
   async registrarMovimiento(data) {
     const plazasInscrito = this.listaBolsaCompatible[1].plazas;
-    const plazasBolsa = this.listaBolsaCompatible[0].plazas;
+    const plazasBolsa = data.plazas;
     const cantidadFilas = Math.max(plazasInscrito.length, plazasBolsa.length);
+    let plazasBolsaString = '';
+    let plazasInscritoString = '';
+
+    plazasBolsa.forEach((plaza) => {
+      plazasBolsaString += plaza.plaza + '\n';
+    });
+    plazasInscrito.forEach((plaza) => {
+      plazasInscritoString += plaza.plaza + '\n';
+    });
+
+    console.log(plazasBolsaString, plazasInscritoString);
 
     Swal.fire({
       title: `Confirmar movimiento`,
@@ -31,18 +42,13 @@ export class FilaComponent implements OnInit {
           </tr>
         </thead>
         <tbody>
-        <tr>
-        <td *ngFor="let plazaInscrito of plazasInscrito" style="text-align: center; vertical-align: middle;">{{plazaInscrito.plaza}}</td>
+        <tr *ngFor="let item of [].constructor(cantidadFilas); let i = index">
+          <td  style="text-align: center; vertical-align: middle;"> ${plazasInscritoString} </td>
+          <td  style="text-align: center; vertical-align: middle;">${plazasBolsaString}</td>
+          <td  style="text-align: center; vertical-align: middle;">${plazasInscrito.length}</td>
+          <td  style="text-align: center; vertical-align: middle;">${plazasBolsa.length}</td>
         </tr>
-          <tr>
-            <td  style="text-align: center; vertical-align: middle;">071713E034100100009</td>
-            <td style="text-align: center; vertical-align: middle;" rowspan="2">071711E012100300006</td>
-            <td style="text-align: center; vertical-align: middle;" rowspan="2">2 CTs</td>
-            <td style="text-align: center; vertical-align: middle;" rowspan="2">1 CT</td>
-          </tr>
-          <tr>
-            <td style="text-align: center; vertical-align: middle;">071713E034100100009</td>
-          </tr>
+
         </tbody>
       </table>`,
       icon: 'warning',

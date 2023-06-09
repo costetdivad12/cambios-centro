@@ -1,1 +1,49 @@
-<p>listamovimientos works!</p>
+<div class="container">
+  
+       <br>
+       <br>
+       
+      <div class="text-center">
+        <h1>Listado participantes con movimiento</h1>
+        <div class="lista-bolsa">
+          <div>
+            
+ 
+            <!-- <h3>Lista de Participantes con Movimiento</h3> -->
+            <hr />
+          </div>
+          <div #tableContainer id="tableContainer" class="tableContainer">
+            <table class="table" >
+              <thead>
+                <tr>
+                  <th scope="col">CURP</th>
+                  <th scope="col">RFC</th>
+                  <th scope="col">NOMBRE COMPLETO</th>
+                  <th scope="col">NUMERO PRELACIÓN</th>
+                  <th scope="col">DESCRIPCIÓN CATEGORIA</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+  
+                <tr    *ngFor="let listaInscritos of datos">
+                  <td>{{listaInscritos.curp}}</td>
+                  <td>{{listaInscritos.rfc}}</td>
+                  <td>{{listaInscritos.nombre  }} {{listaInscritos.apellidoPaterno}} {{listaInscritos.apellidoMaterno}}</td>
+                  <td>{{listaInscritos.numeroPrelacion}}</td>
+                  <td>{{listaInscritos.plazas[0].descripcionCategoria}}</td>
+                   <td><button
+                    type="button"
+                    class="btn btn-danger"
+                    (click)="imprimir(listaInscritos.id,listaInscritos.rfc)"
+                  >Imprimir
+                  </button></td>
+                </tr>
+               
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+      </div>
+  </div>

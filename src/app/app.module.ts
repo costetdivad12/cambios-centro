@@ -13,6 +13,8 @@ import { MapaComponent } from './components/mapa/mapa.component';
 import { ListaBolsaComponent } from './components/lista-bolsa/lista-bolsa.component';
 import { ListainscritosComponent } from './components/listainscritos/listainscritos.component';
 import { ListamovimientosComponent } from './components/listamovimientos/listamovimientos.component';
+import { AgmCoreModule } from '@agm/core';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +35,11 @@ import { ListamovimientosComponent } from './components/listamovimientos/listamo
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    AgmCoreModule.forRoot({
+      // please get your own API key here:
+      // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
+      apiKey: ''
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MapsAPILoader } from "@agm/core";
 
 
 @Component({
@@ -10,12 +11,14 @@ export class MapaComponent implements OnInit {
   @ViewChild('mapa', { static: true }) mapaElement: ElementRef;
  
   map: google.maps.Map;
-  constructor() {
-    
+  constructor(private mapsAPILoader: MapsAPILoader) {
+    this.mapsAPILoader.load().then(() => {
+      this.cargarMapa('ESCUELA SECUNDARIA TECNICA NUM. 27','17DST0035Y',18.639465,-99.208196);
+    });
   }
 
   ngOnInit(): void {
-    this.cargarMapa('ESCUELA SECUNDARIA TECNICA NUM. 27','17DST0035Y',18.639465,-99.208196);
+    
   }
 
   cargarMapa( nombre:string,ct:string, lat:any,lng:any) {

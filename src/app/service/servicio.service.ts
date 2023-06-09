@@ -46,4 +46,23 @@ export class ServicioService {
         })
       );
   }
+
+  getConMovimiento(){
+    return this.http
+    .get(`${this.urlApi}ccts/inscritos/lista/conMovimiento`,httpOptions)
+    .pipe(
+      map((data) => {
+        return data;
+      })
+    );
+  }
+
+
+  imprimirNombramiento(id:number){
+    const headers = new HttpHeaders().set('Content-Type', 'application/pdf');
+    return this.http
+    .get(`${this.urlApi}ccts/inscritos/nombramiento/${id}`,  { headers, responseType: 'blob' as 'json' });
+   
+
+  }
 }

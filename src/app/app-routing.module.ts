@@ -6,6 +6,7 @@ import { AdminGuard } from './guards/admin.guard';
 import { ListaBolsaComponent } from './lista-bolsa/lista-bolsa.component';
 import { ListainscritosComponent } from './components/listainscritos/listainscritos.component';
 import { ListaGuard } from './guards/lista.guard';
+import { ListamovimientosComponent } from './components/listamovimientos/listamovimientos.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
     canActivate: [ListaGuard],
   },
   { path: 'lista-disponible', component: ListaBolsaComponent },
+  { path: 'lista-conmovimiento', component: ListamovimientosComponent ,canActivate: [AdminGuard] },
 ];
 
 @NgModule({

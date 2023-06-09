@@ -75,7 +75,12 @@
             *ngFor="let inscrito of inscritosSinMovimiento"
             [ngValue]="inscrito"
           >
-            {{ inscrito.rfc }} - {{ inscrito.plazas[0].asignatura }}
+            {{ inscrito.rfc }} -
+            {{
+              inscrito.plazas.length > 1
+                ? inscrito.plazas[0].asignatura
+                : inscrito.plazas[0].plaza.slice(-6)
+            }}
           </option>
         </select>
       </form>

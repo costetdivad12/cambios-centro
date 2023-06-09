@@ -12,7 +12,6 @@ export class AdminComponent implements OnInit {
 
   recibirListaBolsaEnAdmin(lista) {
     this.listaBolsaCompatible = lista;
-    console.log('Lista recibida en admin', lista[0]);
   }
   ngOnInit(): void {}
 }

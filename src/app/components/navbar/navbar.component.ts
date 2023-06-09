@@ -23,7 +23,6 @@ export class NavbarComponent implements OnInit {
 
   mostarDatosInscrito(participante) {
     this.participante = participante;
-    console.log(this.participante);
     this.cargarBolsaCompatible(participante.id);
   }
 
@@ -32,7 +31,10 @@ export class NavbarComponent implements OnInit {
       .getBolsaCompatibleConInscrito(idInscrito)
       .subscribe((resp: any) => {
         this.listaBolsaCompatible = resp;
-        this.onChangeCurpSelected.emit(this.listaBolsaCompatible);
+        this.onChangeCurpSelected.emit([
+          this.listaBolsaCompatible,
+          this.participante,
+        ]);
       });
   }
 

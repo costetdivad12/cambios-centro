@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ServicioService } from 'src/app/service/servicio.service';
 
 declare var $: any;
@@ -12,9 +12,28 @@ export class NavbarComponent implements OnInit {
   constructor(private service: ServicioService) {}
   inscritosSinMovimiento: Array<Object> = [];
   participante: any = {};
-  imprimir(participante) {
+
+  listaBolsaCompatible: Array<Object> = [];
+
+  recibirListaBolsa(lista: Array<Object>) {
+    this.listaBolsaCompatible = lista;
+  }
+  @Output() onChangeCurpSelected: EventEmitter<Array<Object>> =
+    new EventEmitter();
+
+  mostarDatosInscrito(participante) {
     this.participante = participante;
     console.log(this.participante);
+    this.cargarBolsaCompatible(participante.id);
+  }
+
+  cargarBolsaCompatible(idInscrito: number) {
+    this.service
+      .getBolsaCompatibleConInscrito(idInscrito)
+      .subscribe((resp: any) => {
+        this.listaBolsaCompatible = resp;
+        this.onChangeCurpSelected.emit(this.listaBolsaCompatible);
+      });
   }
 
   refreshSelectPicker() {

@@ -14,6 +14,7 @@ import { ListaBolsaComponent } from './components/lista-bolsa/lista-bolsa.compon
 import { ListainscritosComponent } from './components/listainscritos/listainscritos.component';
 import { ListamovimientosComponent } from './components/listamovimientos/listamovimientos.component';
 import { AgmCoreModule } from '@agm/core';
+import { DataTablesModule } from 'angular-datatables';
 
 
 @NgModule({
@@ -31,15 +32,18 @@ import { AgmCoreModule } from '@agm/core';
   ],
   imports: [
     BrowserModule,
+    
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    DataTablesModule,
     AgmCoreModule.forRoot({
       // please get your own API key here:
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
       apiKey: ''
     })
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

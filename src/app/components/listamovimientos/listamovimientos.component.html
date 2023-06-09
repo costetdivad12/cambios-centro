@@ -2,9 +2,16 @@
   
        <br>
        <br>
-       
+       <button
+  type="button"
+  class="btn btn-danger"
+  (click)="regresar()"
+>
+  Regresar
+</button> 
+<br>
       <div class="text-center">
-        <h1>Listado participantes con movimiento</h1>
+        <h1>Listado participantes con movimiento de cambio de centro de trabajo.</h1>
         <div class="lista-bolsa">
           <div>
             
@@ -12,9 +19,9 @@
             <!-- <h3>Lista de Participantes con Movimiento</h3> -->
             <hr />
           </div>
-          <div #tableContainer id="tableContainer" class="tableContainer">
-            <table class="table" >
-              <thead>
+           <div #tableContainer id="tableContainer" class="tableContainer"> 
+            <table datatable [dtOptions]="dtOptions"  >
+              <!-- <thead>
                 <tr>
                   <th scope="col">CURP</th>
                   <th scope="col">RFC</th>
@@ -26,7 +33,7 @@
               </thead>
               <tbody>
   
-                <tr    *ngFor="let listaInscritos of datos">
+                <tr *ngFor="let listaInscritos of datos">
                   <td>{{listaInscritos.curp}}</td>
                   <td>{{listaInscritos.rfc}}</td>
                   <td>{{listaInscritos.nombre  }} {{listaInscritos.apellidoPaterno}} {{listaInscritos.apellidoMaterno}}</td>
@@ -39,11 +46,9 @@
                   >Imprimir
                   </button></td>
                 </tr>
-               
-              </tbody>
+              </tbody> -->
             </table>
           </div>
         </div>
-        
       </div>
   </div>

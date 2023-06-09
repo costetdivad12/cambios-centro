@@ -10,12 +10,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MainContainerComponent } from './components/main-container/main-container.component';
 import { FilaComponent } from './components/fila/fila.component';
 import { MapaComponent } from './components/mapa/mapa.component';
-import { ListaBolsaComponent } from './components/lista-bolsa/lista-bolsa.component';
+import { ListaBolsaComponent } from './lista-bolsa/lista-bolsa.component';
 import { ListainscritosComponent } from './components/listainscritos/listainscritos.component';
 import { ListamovimientosComponent } from './components/listamovimientos/listamovimientos.component';
 import { AgmCoreModule } from '@agm/core';
 import { DataTablesModule } from 'angular-datatables';
-
 
 @NgModule({
   declarations: [
@@ -41,9 +40,8 @@ import { DataTablesModule } from 'angular-datatables';
     AgmCoreModule.forRoot({
       // please get your own API key here:
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
-      apiKey: ''
-    })
-    
+      apiKey: '',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

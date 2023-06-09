@@ -1,6 +1,6 @@
 <div class="container-filas">
   <table class="table">
-    <thead>
+    <thead style="position: sticky; top: 0; background-color: white">
       <tr>
         <th>Categoria</th>
         <th>Asignatura</th>
@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <ng-container *ngFor="let bolsa of listaBolsaCompatible">
+      <ng-container *ngFor="let bolsa of listaBolsaCompatible[0]">
         <ng-container *ngFor="let plaza of bolsa.plazas; let i = index">
           <tr>
             <td *ngIf="i === 0" [attr.rowspan]="bolsa.plazas.length">

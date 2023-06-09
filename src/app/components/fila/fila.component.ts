@@ -10,255 +10,24 @@ import { ServicioService } from '../../service/servicio.service';
 export class FilaComponent implements OnInit {
   constructor(private service: ServicioService) {}
   dtOptions: any = {};
-  @Input() listaBolsaCompatible: Array<Object> = [];
+  @Input() listaBolsaCompatible = [];
   inscritosSinMovimiento: any[] = [];
 
-  tableArray = [
-    {
-      idBolsa: 1,
-      horasTotales: 45,
-      plazas: [
-        {
-          plaza: 'abc',
-          asignatura: 'Matematicas',
-          categoria: 'E0722',
-          horas: '15',
-          CCT: '17DPR0001A',
-          nombreCT: 'Nombre escuela largo',
-          municipio: 'Cuernavaca',
-        },
-        {
-          plaza: 'abc',
-          asignatura: 'Matematicas',
-          categoria: 'E0722',
-          horas: '15',
-          CCT: '17DPR1070B',
-          nombreCT: 'Nombre escuela largo',
-          municipio: 'Jiutepec',
-        },
-      ],
-    },
-    {
-      idBolsa: 1,
-      horasTotales: 45,
-      plazas: [
-        {
-          plaza: 'abc',
-          asignatura: 'Matematicas',
-          categoria: 'E0722',
-          horas: '15',
-          CCT: '17DPR0001A',
-          nombreCT: 'Nombre escuela largo',
-          municipio: 'Cuernavaca',
-        },
-      ],
-    },
-    {
-      idBolsa: 1,
-      horasTotales: 45,
-      plazas: [
-        {
-          plaza: 'abc',
-          asignatura: 'Matematicas',
-          categoria: 'E0722',
-          horas: '15',
-          CCT: '17DPR0001A',
-          nombreCT: 'Nombre escuela largo',
-          municipio: 'Cuernavaca',
-        },
-        {
-          plaza: 'abc',
-          asignatura: 'Matematicas',
-          categoria: 'E0722',
-          horas: '15',
-          CCT: '17DPR1070B',
-          nombreCT: 'Nombre escuela largo',
-          municipio: 'Jiutepec',
-        },
-        {
-          plaza: 'abc',
-          asignatura: 'Matematicas',
-          categoria: 'E0722',
-          horas: '15',
-          CCT: '17DPR0001A',
-          nombreCT: 'Nombre escuela largo',
-          municipio: 'Cuernavaca',
-        },
-      ],
-    },
-    {
-      idBolsa: 1,
-      horasTotales: 45,
-      plazas: [
-        {
-          plaza: 'abc',
-          asignatura: 'Matematicas',
-          categoria: 'E0722',
-          horas: '15',
-          CCT: '17DPR0001A',
-          nombreCT: 'Nombre escuela largo',
-          municipio: 'Cuernavaca',
-        },
-        {
-          plaza: 'abc',
-          asignatura: 'Matematicas',
-          categoria: 'E0722',
-          horas: '15',
-          CCT: '17DPR1070B',
-          nombreCT: 'Nombre escuela largo',
-          municipio: 'Jiutepec',
-        },
-        {
-          plaza: 'abc',
-          asignatura: 'Matematicas',
-          categoria: 'E0722',
-          horas: '15',
-          CCT: '17DPR0001A',
-          nombreCT: 'Nombre escuela largo',
-          municipio: 'Cuernavaca',
-        },
-      ],
-    },
-    {
-      idBolsa: 1,
-      horasTotales: 45,
-      plazas: [
-        {
-          plaza: 'abc',
-          asignatura: 'Matematicas',
-          categoria: 'E0722',
-          horas: '15',
-          CCT: '17DPR0001A',
-          nombreCT: 'Nombre escuela largo',
-          municipio: 'Cuernavaca',
-        },
-        {
-          plaza: 'abc',
-          asignatura: 'Matematicas',
-          categoria: 'E0722',
-          horas: '15',
-          CCT: '17DPR1070B',
-          nombreCT: 'Nombre escuela largo',
-          municipio: 'Jiutepec',
-        },
-        {
-          plaza: 'abc',
-          asignatura: 'Matematicas',
-          categoria: 'E0722',
-          horas: '15',
-          CCT: '17DPR0001A',
-          nombreCT: 'Nombre escuela largo',
-          municipio: 'Cuernavaca',
-        },
-      ],
-    },
-    {
-      idBolsa: 1,
-      horasTotales: 45,
-      plazas: [
-        {
-          plaza: 'abc',
-          asignatura: 'Matematicas',
-          categoria: 'E0722',
-          horas: '15',
-          CCT: '17DPR0001A',
-          nombreCT: 'Nombre escuela largo',
-          municipio: 'Cuernavaca',
-        },
-        {
-          plaza: 'abc',
-          asignatura: 'Matematicas',
-          categoria: 'E0722',
-          horas: '15',
-          CCT: '17DPR1070B',
-          nombreCT: 'Nombre escuela largo',
-          municipio: 'Jiutepec',
-        },
-        {
-          plaza: 'abc',
-          asignatura: 'Matematicas',
-          categoria: 'E0722',
-          horas: '15',
-          CCT: '17DPR0001A',
-          nombreCT: 'Nombre escuela largo',
-          municipio: 'Cuernavaca',
-        },
-      ],
-    },
-    {
-      idBolsa: 1,
-      horasTotales: 45,
-      plazas: [
-        {
-          plaza: 'abc',
-          asignatura: 'Matematicas',
-          categoria: 'E0722',
-          horas: '15',
-          CCT: '17DPR0001A',
-          nombreCT: 'Nombre escuela largo',
-          municipio: 'Cuernavaca',
-        },
-        {
-          plaza: 'abc',
-          asignatura: 'Matematicas',
-          categoria: 'E0722',
-          horas: '15',
-          CCT: '17DPR1070B',
-          nombreCT: 'Nombre escuela largo',
-          municipio: 'Jiutepec',
-        },
-        {
-          plaza: 'abc',
-          asignatura: 'Matematicas',
-          categoria: 'E0722',
-          horas: '15',
-          CCT: '17DPR0001A',
-          nombreCT: 'Nombre escuela largo',
-          municipio: 'Cuernavaca',
-        },
-      ],
-    },
-    {
-      idBolsa: 1,
-      horasTotales: 45,
-      plazas: [
-        {
-          plaza: 'abc',
-          asignatura: 'Matematicas',
-          categoria: 'E0722',
-          horas: '15',
-          CCT: '17DPR0001A',
-          nombreCT: 'Nombre escuela largo',
-          municipio: 'Cuernavaca',
-        },
-        {
-          plaza: 'abc',
-          asignatura: 'Matematicas',
-          categoria: 'E0722',
-          horas: '15',
-          CCT: '17DPR1070B',
-          nombreCT: 'Nombre escuela largo',
-          municipio: 'Jiutepec',
-        },
-        {
-          plaza: 'abc',
-          asignatura: 'Matematicas',
-          categoria: 'E0722',
-          horas: '15',
-          CCT: '17DPR0001A',
-          nombreCT: 'Nombre escuela largo',
-          municipio: 'Cuernavaca',
-        },
-      ],
-    },
-  ];
-
   async registrarMovimiento(data) {
-    console.log(data);
-    const cantidadPlazasBolsa = data.plazas.length;
-    const asignaturaBolsa = data.plazas[0].asignatura;
-    const categoriaBolsa = data.plazas[0].categoria;
-    const { horasTotalesBolsa: horasTotales } = data;
+    const plazasInscrito = this.listaBolsaCompatible[1].plazas;
+    const plazasBolsa = data.plazas;
+    const cantidadFilas = Math.max(plazasInscrito.length, plazasBolsa.length);
+    let plazasBolsaString = '';
+    let plazasInscritoString = '';
+
+    plazasBolsa.forEach((plaza) => {
+      plazasBolsaString += plaza.plaza + '\n';
+    });
+    plazasInscrito.forEach((plaza) => {
+      plazasInscritoString += plaza.plaza + '\n';
+    });
+
+    console.log(plazasBolsaString, plazasInscritoString);
 
     Swal.fire({
       title: `Confirmar movimiento`,
@@ -273,15 +42,13 @@ export class FilaComponent implements OnInit {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td style="text-align: center; vertical-align: middle;">071713E034100100009</td>
-            <td style="text-align: center; vertical-align: middle;" rowspan="2">071711E012100300006</td>
-            <td style="text-align: center; vertical-align: middle;" rowspan="2">2 CTs</td>
-            <td style="text-align: center; vertical-align: middle;" rowspan="2">1 CT</td>
-          </tr>
-          <tr>
-            <td style="text-align: center; vertical-align: middle;">071713E034100100009</td>
-          </tr>
+        <tr *ngFor="let item of [].constructor(cantidadFilas); let i = index">
+          <td  style="text-align: center; vertical-align: middle;"> ${plazasInscritoString} </td>
+          <td  style="text-align: center; vertical-align: middle;">${plazasBolsaString}</td>
+          <td  style="text-align: center; vertical-align: middle;">${plazasInscrito.length}</td>
+          <td  style="text-align: center; vertical-align: middle;">${plazasBolsa.length}</td>
+        </tr>
+
         </tbody>
       </table>`,
       icon: 'warning',

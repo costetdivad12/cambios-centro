@@ -1,2 +1,8 @@
-<app-navbar></app-navbar>
-<app-main-container class="navbar-style"></app-main-container>
+<app-navbar
+  (onChangeCurpSelected)="recibirListaBolsaEnAdmin($event)"
+></app-navbar>
+
+<app-main-container
+  [listaBolsaCompatible]="listaBolsaCompatible"
+  class="navbar-style"
+></app-main-container>

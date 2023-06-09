@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import Swal from 'sweetalert2';
-import { ServicioService } from '../service/servicio.service';
+import { ServicioService } from '../../service/servicio.service';
 
 @Component({
   selector: 'app-fila',
@@ -10,7 +10,7 @@ import { ServicioService } from '../service/servicio.service';
 export class FilaComponent implements OnInit {
   constructor(private service: ServicioService) {}
   dtOptions: any = {};
-
+  @Input() listaBolsaCompatible: Array<Object> = [];
   inscritosSinMovimiento: any[] = [];
 
   tableArray = [

@@ -38,6 +38,7 @@ export class ListainscritosComponent implements OnInit {
       this.inter = interval(this.tiempo).subscribe((val: any) => {
         this.service.getInscritos(nivel).subscribe((resp: any) => {
           this.datos = resp;
+          // console.log(this.datos);
         });
       });
     }

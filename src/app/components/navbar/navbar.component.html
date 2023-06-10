@@ -1,16 +1,10 @@
 <!-- Navbar -->
-<button
-  type="button"
-  class="btn btn-danger"
-  (click)="cerrar()"
->
+<button type="button" class="btn btn-danger" (click)="cerrar()">
   Cerrar Sesión
-</button> 
+</button>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-   
   <!-- Container wrapper -->
   <div class="container-fluid">
-    
     <!-- Navbar brand -->
     <a class="navbar-brand" href="#">SICCT - SCAMM</a>
 
@@ -24,9 +18,13 @@
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/lista-conmovimiento">Movimientos</a>
+          <a
+            class="nav-link"
+            aria-current="page"
+            routerLink="/lista-conmovimiento"
+            >Movimientos</a
+          >
         </li>
-        
       </ul>
       <!-- Left links -->
       <div
@@ -88,8 +86,8 @@
             {{ inscrito.rfc }} -
             {{
               inscrito.plazas.length > 1
-                ? inscrito.plazas[0].asignatura
-                : inscrito.plazas[0].plaza.slice(-6)
+                ? inscrito.plazas[0]?.asignatura
+                : inscrito.plazas[0]?.plaza.slice(-6)
             }}
           </option>
         </select>

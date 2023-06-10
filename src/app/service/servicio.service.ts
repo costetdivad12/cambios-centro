@@ -11,6 +11,7 @@ const httpOptions = {
     'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
     'Access-Control-Allow-Headers': '*',
     'Access-Control-Allow-Credentials': 'true',
+    'Content-Type': 'application/json',
   }),
 };
 
@@ -21,6 +22,33 @@ export class ServicioService {
   urlApi: string = environment.urlApi;
 
   constructor(private http: HttpClient, public routers: Router) {}
+
+  putNuevoMovimiento(movimiento) {
+    console.log(movimiento);
+    const {
+      idParticipanteBolsa,
+      idParticipanteInscrito,
+      plazasInscrito,
+      motivos,
+    } = movimiento;
+    const { motivoA, motivoB, motivoC, motivoD, motivoE } = motivos;
+    const movimientoPost = {
+      idParticipanteBolsa,
+      idParticipanteInscrito,
+      motivoA,
+      motivoB,
+      motivoC,
+      motivoD,
+      motivoE,
+      plazas: plazasInscrito,
+    };
+    console.log(JSON.stringify(movimientoPost));
+    return this.http.post(
+      `${this.urlApi}ccts/movimiento/save`,
+      JSON.stringify(movimientoPost),
+      httpOptions
+    );
+  }
 
   getBolsaCompatibleConInscrito(idInscrito: number) {
     return this.http
@@ -47,22 +75,21 @@ export class ServicioService {
       );
   }
 
-  getConMovimiento(){
+  getConMovimiento() {
     return this.http
-    .get(`${this.urlApi}ccts/inscritos/lista/conMovimiento`,httpOptions)
-    .pipe(
-      map((data) => {
-        return data;
-      })
-    );
+      .get(`${this.urlApi}ccts/inscritos/lista/conMovimiento`, httpOptions)
+      .pipe(
+        map((data) => {
+          return data;
+        })
+      );
   }
 
-
-  imprimirNombramiento(id:number){
+  imprimirNombramiento(id: number) {
     const headers = new HttpHeaders().set('Content-Type', 'application/pdf');
-    return this.http
-    .get(`${this.urlApi}ccts/inscritos/nombramiento/${id}`,  { headers, responseType: 'blob' as 'json' });
-   
-
+    return this.http.get(`${this.urlApi}ccts/inscritos/nombramiento/${id}`, {
+      headers,
+      responseType: 'blob' as 'json',
+    });
   }
 }

@@ -9,14 +9,32 @@ import { ServicioService } from '../../service/servicio.service';
 })
 export class FilaComponent implements OnInit {
   constructor(private service: ServicioService) {}
+  motivos = {
+    motivoA: '',
+    motivoB: '',
+    motivoC: '',
+    motivoD: '',
+    motivoE: 'x',
+  };
   dtOptions: any = {};
   @Input() listaBolsaCompatible = [];
   inscritosSinMovimiento: any[] = [];
 
-  async registrarMovimiento(data) {
+  registrarMovimiento(dataInscrito, dataBolsa) {
+    const movimiento = {
+      idParticipanteBolsa: dataBolsa.id,
+      idParticipanteInscrito: dataInscrito.id,
+      motivos: this.motivos,
+      plazasInscrito: dataInscrito.plazas,
+    };
+
+    return this.service.putNuevoMovimiento(movimiento);
+  }
+
+  async porRegistrarMovimiento(dataBolsa) {
+    const dataInscrito = this.listaBolsaCompatible[1];
     const plazasInscrito = this.listaBolsaCompatible[1].plazas;
-    const plazasBolsa = data.plazas;
-    const cantidadFilas = Math.max(plazasInscrito.length, plazasBolsa.length);
+    const plazasBolsa = dataBolsa.plazas;
     let plazasBolsaString = '';
     let plazasInscritoString = '';
 
@@ -26,8 +44,6 @@ export class FilaComponent implements OnInit {
     plazasInscrito.forEach((plaza) => {
       plazasInscritoString += plaza.plaza + '\n';
     });
-
-    console.log(plazasBolsaString, plazasInscritoString);
 
     Swal.fire({
       title: `Confirmar movimiento`,
@@ -64,10 +80,31 @@ export class FilaComponent implements OnInit {
       //https://sweetalert2.github.io/#examples AJAX request example
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Movimiento guardado',
-          'El movimiento fue registrado correctamente.',
-          'success'
+        const respuesta = this.registrarMovimiento(
+          dataInscrito,
+          dataBolsa
+        ).subscribe(
+          (data: any) => {
+            console.log(data);
+            const status = data.status;
+            Swal.fire({
+              title: 'Movimiento guardado',
+              text: `El movimiento fue guardado exitosamente.`,
+              icon: 'success',
+              confirmButtonText: 'Descargar Nombramiento',
+            }).then((result) => {
+              if (result.isConfirmed) {
+                //por terminar
+              }
+            });
+          },
+          (error) => {
+            Swal.fire({
+              title: 'Error',
+              text: `Ocurrio un error al intentar guardar el movimiento, consulte a soporte. \n Error: ${error.status}`,
+              icon: 'error',
+            });
+          }
         );
       }
       if (result.isDenied) {

@@ -1,10 +1,8 @@
 <!-- Navbar -->
-<button type="button" class="btn btn-danger" (click)="cerrar()">
-  Cerrar Sesión
-</button>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <!-- Container wrapper -->
-  <div class="container-fluid">
+  <div class="container-fluid" style="display: table">
     <!-- Navbar brand -->
     <a class="navbar-brand" href="#">SICCT - SCAMM</a>
 
@@ -23,6 +21,11 @@
             aria-current="page"
             routerLink="/lista-conmovimiento"
             >Movimientos</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="#" (click)="cerrar()"
+            >Cerrar Sesión</a
           >
         </li>
       </ul>
@@ -70,28 +73,37 @@
         </div>
       </div>
       <!-- Search form -->
-      <form class="d-flex input-group" style="width: 500px; right: 20px">
-        <select
-          name="participante"
-          [(ngModel)]="participante"
-          class="form-control selectpicker"
-          id="participante"
-          data-live-search="true"
-          (change)="mostarDatosInscrito(participante)"
-        >
-          <option
-            *ngFor="let inscrito of inscritosSinMovimiento"
-            [ngValue]="inscrito"
+      <div>
+        <form class="d-flex input-group" style="width: 500px; right: 20px">
+          <select
+            name="participante"
+            [(ngModel)]="participante"
+            class="form-control selectpicker"
+            id="participante"
+            data-live-search="true"
+            (change)="mostarDatosInscrito(participante)"
           >
-            {{ inscrito.rfc }} -
-            {{
-              inscrito.plazas.length > 1
-                ? inscrito.plazas[0]?.asignatura
-                : inscrito.plazas[0]?.plaza.slice(-6)
-            }}
-          </option>
-        </select>
-      </form>
+            <option
+              *ngFor="let inscrito of inscritosSinMovimiento"
+              [ngValue]="inscrito"
+            >
+              {{ inscrito.rfc }} -
+              {{
+                inscrito.plazas.length > 1
+                  ? inscrito.plazas[0]?.asignatura
+                  : inscrito.plazas[0]?.plaza.slice(-6)
+              }}
+            </option>
+          </select>
+          <br />
+          <button
+            class="btn btn-danger"
+            (click)="rechazarMovimiento(participante.id)"
+          >
+            Rechazar Cambio CT
+          </button>
+        </form>
+      </div>
     </div>
     <!-- Collapsible wrapper -->
   </div>

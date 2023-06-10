@@ -15,7 +15,7 @@
     <tbody>
       <ng-container *ngFor="let bolsa of listaBolsaCompatible[0]">
         <ng-container *ngFor="let plaza of bolsa.plazas; let i = index">
-          <tr (click)="ver(plaza)">
+          <tr (click)="ver(plaza)" style="cursor: pointer">
             <td *ngIf="i === 0" [attr.rowspan]="bolsa.plazas.length">
               {{ bolsa.plazas[0].categoria }}
             </td>
@@ -32,7 +32,7 @@
             <td *ngIf="i === 0" [attr.rowspan]="bolsa.plazas.length">
               <button
                 class="btn btn-primary"
-                (click)="registrarMovimiento(bolsa)"
+                (click)="porRegistrarMovimiento(bolsa)"
               >
                 Registrar
               </button>

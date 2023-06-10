@@ -9,16 +9,46 @@ import { ServicioService } from '../../service/servicio.service';
 })
 export class FilaComponent implements OnInit {
   constructor(private service: ServicioService) {}
+  motivos = {
+    motivoA: '',
+    motivoB: '',
+    motivoC: '',
+    motivoD: '',
+    motivoE: 'x',
+  };
   dtOptions: any = {};
   @Input() listaBolsaCompatible = [];
   @Output() onUpdateMap: EventEmitter<Array<Object>> =
   new EventEmitter();
   inscritosSinMovimiento: any[] = [];
 
-  async registrarMovimiento(data) {
+  registrarMovimiento(dataInscrito, dataBolsa) {
+    const movimiento = {
+      idParticipanteBolsa: dataBolsa.id,
+      idParticipanteInscrito: dataInscrito.id,
+      motivos: this.motivos,
+      plazasInscrito: dataInscrito.plazas,
+    };
+
+    return this.service.putNuevoMovimiento(movimiento);
+  }
+
+  imprimir(id: number, rfc: string) {
+    this.service.imprimirNombramiento(id).subscribe((data: any) => {
+      const blob = new Blob([data], { type: 'application/pdf' });
+
+      const downloadURL = window.URL.createObjectURL(data);
+      const link = document.createElement('a');
+      link.href = downloadURL;
+      link.download = `${rfc}.pdf`;
+      link.click();
+    });
+  }
+
+  async porRegistrarMovimiento(dataBolsa) {
+    const dataInscrito = this.listaBolsaCompatible[1];
     const plazasInscrito = this.listaBolsaCompatible[1].plazas;
-    const plazasBolsa = data.plazas;
-    const cantidadFilas = Math.max(plazasInscrito.length, plazasBolsa.length);
+    const plazasBolsa = dataBolsa.plazas;
     let plazasBolsaString = '';
     let plazasInscritoString = '';
 
@@ -28,8 +58,6 @@ export class FilaComponent implements OnInit {
     plazasInscrito.forEach((plaza) => {
       plazasInscritoString += plaza.plaza + '\n';
     });
-
-    console.log(plazasBolsaString, plazasInscritoString);
 
     Swal.fire({
       title: `Confirmar movimiento`,
@@ -66,16 +94,41 @@ export class FilaComponent implements OnInit {
       //https://sweetalert2.github.io/#examples AJAX request example
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Movimiento guardado',
-          'El movimiento fue registrado correctamente.',
-          'success'
+        const respuesta = this.registrarMovimiento(
+          dataInscrito,
+          dataBolsa
+        ).subscribe(
+          (data: any) => {
+            const status = data.status;
+            Swal.fire({
+              title: 'Movimiento guardado',
+              text: `El movimiento fue guardado exitosamente.`,
+              icon: 'success',
+              confirmButtonText: 'Descargar Nombramiento',
+              showLoaderOnConfirm: true,
+              preConfirm: () => {
+                return new Promise((resolve) => {
+                  this.imprimir(dataInscrito.id, dataInscrito.rfc);
+                  setTimeout(() => {
+                    window.location.reload();
+                  }, 2000);
+                });
+              },
+            }).then((result) => {});
+          },
+          (error) => {
+            Swal.fire({
+              title: 'Error',
+              text: `Ocurrió un error al intentar guardar el movimiento, consulte a soporte. \n Error: ${error.status}`,
+              icon: 'error',
+            });
+          }
         );
       }
       if (result.isDenied) {
         Swal.fire(
           'Movimiento denegado',
-          'Ocurrio un error al intentar guardar el movimiento',
+          'Ocurrió un error al intentar guardar el movimiento',
           'error'
         );
       }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { ServicioService } from 'src/app/service/servicio.service';
+import { logging } from 'protractor';
 
 
 @Component({
@@ -9,61 +11,136 @@ import { ServicioService } from 'src/app/service/servicio.service';
   styleUrls: ['./listamovimientos.component.css']
 })
 export class ListamovimientosComponent implements OnInit {
- datos:any=[];
-  
- dtOptions: any = [];
- constructor(private service:ServicioService,private router:Router) {
-    
-   }
-  
+  datos: any = [];
+
+  dtOptions: DataTables.Settings = {};
+
+  constructor(private service: ServicioService, private router: Router) {
+
+  }
+
+
+
+
+
   ngOnInit(): void {
 
-    this.dtOptions = {
-      data: [
-        { id: 1, firstName: 'Horacio', lastName: 'Fernandez' },
-        { id: 2, firstName: 'Abc', lastName: 'zyx' },
-      ],
 
+    // this.service.getConMovimiento().subscribe((resp)=>{
+
+    //   this.datos=resp;
+    //   console.log(this.datos);
+
+    //    });
+
+
+    this.dtOptions = {
+      ajax: (dataTablesParameters: any, callback) => {
+        this.service.getConMovimiento().subscribe((resp) => {
+          console.log(resp);
+          callback({
+
+            data: resp             // <-- see here
+
+          });
+
+        });
+
+      }
+      ,
       columns: [
         {
-          title: 'ID',
-          data: 'id',
+          title: 'CURP',
+          data: 'curp',
         },
         {
-          title: 'First name',
-          data: 'firstName',
+          title: 'RFC',
+          data: 'rfc',
+
         },
         {
-          title: 'Last name',
-          data: 'lastName',
-          class: 'none',
+          title: 'NOMBRE',
+          data: 'nombre',
+
+        },
+        {
+          title: 'APELLIDO PATERNO',
+          data: 'apellidoPaterno',
+
+        },
+        {
+          title: 'APELLIDO MATERNO',
+          data: 'apellidoMaterno',
+
+        },
+        {
+          title: 'NO. PRELACIÓN',
+          data: 'numeroPrelacion',
+
+        },
+        {
+          title: 'DESCRIPCIÓN CAT.',
+          data: 'plazas[0].descripcionCategoria',
+
+        },
+        {
+          title: 'ACCIÓN',
+          data: null,
+          defaultContent: `<button type='button'
+            class='btn btn-danger'
+            name='descarga'
+            id='descarga'
+          >
+            Imprimir Nombramiento
+          </button> `
         },
       ],
       responsive: true,
-    };
-  
+      rowCallback: (row:any, data: any, index: number) => {
+        const self = this;
+        // Unbind first in order to avoid any duplicate handler
+        // (see https://github.com/l-lin/angular-datatables/issues/87)
+        const { cells } = row;
+        for (let i = 0; i < cells.length; i++) {
+          if (cells[i].children.length > 0) {
+            $('#descarga', row).off('click');
+            $('#descarga', row).on('click', () => {
+              console.log(data.id);
+              this.imprimir(data.id,data.rfc);
+            });
+          }
+        }
 
-    this.service.getConMovimiento().subscribe((resp)=>{
-      console.log(resp);
-      this.datos=resp;
-     
-  });
+        return row;
+      },
+    };
+
+
+    console.log('ultimo dato', this.datos, this.dtOptions);
+
+
+
+
+
+
   }
 
-  imprimir(id:number,rfc:string){
-    
-    this.service.imprimirNombramiento(id).subscribe((data:any)=>{
+  imprimir(id: number, rfc: string) {
+
+    this.service.imprimirNombramiento(id).subscribe((data: any) => {
       const blob = new Blob([data], { type: 'application/pdf' });
 
-            const downloadURL = window.URL.createObjectURL(data);
-            const link = document.createElement('a');
-            link.href = downloadURL;
-            link.download = `${rfc}.pdf`;
-            link.click();
-  }); 
+      const downloadURL = window.URL.createObjectURL(data);
+      const link = document.createElement('a');
+      link.href = downloadURL;
+      link.download = `${rfc}.pdf`;
+      link.click();
+    });
   }
 
-  regresar(){
+
+
+  regresar() {
     this.router.navigateByUrl('homeAdmin');
   }
 

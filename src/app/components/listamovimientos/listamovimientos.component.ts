@@ -4,50 +4,27 @@ import { Subject } from 'rxjs';
 import { ServicioService } from 'src/app/service/servicio.service';
 import { logging } from 'protractor';
 
-
 @Component({
   selector: 'app-listamovimientos',
   templateUrl: './listamovimientos.component.html',
-  styleUrls: ['./listamovimientos.component.css']
+  styleUrls: ['./listamovimientos.component.css'],
 })
 export class ListamovimientosComponent implements OnInit {
   datos: any = [];
 
   dtOptions: DataTables.Settings = {};
 
-  constructor(private service: ServicioService, private router: Router) {
-
-  }
-
-
-
-
+  constructor(private service: ServicioService, private router: Router) {}
 
   ngOnInit(): void {
-
-
-    // this.service.getConMovimiento().subscribe((resp)=>{
-
-    //   this.datos=resp;
-    //   console.log(this.datos);
-
-    //    });
-
-
     this.dtOptions = {
       ajax: (dataTablesParameters: any, callback) => {
         this.service.getConMovimiento().subscribe((resp) => {
-          console.log(resp);
           callback({
-
-            data: resp             // <-- see here
-
+            data: resp, // <-- see here
           });
-
         });
-
-      }
-      ,
+      },
       columns: [
         {
           title: 'CURP',
@@ -56,32 +33,26 @@ export class ListamovimientosComponent implements OnInit {
         {
           title: 'RFC',
           data: 'rfc',
-
         },
         {
           title: 'NOMBRE',
           data: 'nombre',
-
         },
         {
           title: 'APELLIDO PATERNO',
           data: 'apellidoPaterno',
-
         },
         {
           title: 'APELLIDO MATERNO',
           data: 'apellidoMaterno',
-
         },
         {
           title: 'NO. PRELACIÓN',
           data: 'numeroPrelacion',
-
         },
         {
           title: 'DESCRIPCIÓN CAT.',
           data: 'plazas[0].descripcionCategoria',
-
         },
         {
           title: 'ACCIÓN',
@@ -92,11 +63,11 @@ export class ListamovimientosComponent implements OnInit {
             id='descarga'
           >
             Imprimir Nombramiento
-          </button> `
+          </button> `,
         },
       ],
       responsive: true,
-      rowCallback: (row:any, data: any, index: number) => {
+      rowCallback: (row: any, data: any, index: number) => {
         const self = this;
         // Unbind first in order to avoid any duplicate handler
         // (see https://github.com/l-lin/angular-datatables/issues/87)
@@ -105,8 +76,7 @@ export class ListamovimientosComponent implements OnInit {
           if (cells[i].children.length > 0) {
             $('#descarga', row).off('click');
             $('#descarga', row).on('click', () => {
-              console.log(data.id);
-              this.imprimir(data.id,data.rfc);
+              this.imprimir(data.id, data.rfc);
             });
           }
         }
@@ -114,19 +84,9 @@ export class ListamovimientosComponent implements OnInit {
         return row;
       },
     };
-
-
-    console.log('ultimo dato', this.datos, this.dtOptions);
-
-
-
-
-
-
   }
 
   imprimir(id: number, rfc: string) {
-
     this.service.imprimirNombramiento(id).subscribe((data: any) => {
       const blob = new Blob([data], { type: 'application/pdf' });
 
@@ -138,10 +98,7 @@ export class ListamovimientosComponent implements OnInit {
     });
   }
 
-
-
   regresar() {
     this.router.navigateByUrl('homeAdmin');
   }
-
 }

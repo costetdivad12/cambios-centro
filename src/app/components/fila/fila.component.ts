@@ -31,6 +31,18 @@ export class FilaComponent implements OnInit {
     return this.service.putNuevoMovimiento(movimiento);
   }
 
+  imprimir(id: number, rfc: string) {
+    this.service.imprimirNombramiento(id).subscribe((data: any) => {
+      const blob = new Blob([data], { type: 'application/pdf' });
+
+      const downloadURL = window.URL.createObjectURL(data);
+      const link = document.createElement('a');
+      link.href = downloadURL;
+      link.download = `${rfc}.pdf`;
+      link.click();
+    });
+  }
+
   async porRegistrarMovimiento(dataBolsa) {
     const dataInscrito = this.listaBolsaCompatible[1];
     const plazasInscrito = this.listaBolsaCompatible[1].plazas;
@@ -85,23 +97,27 @@ export class FilaComponent implements OnInit {
           dataBolsa
         ).subscribe(
           (data: any) => {
-            console.log(data);
             const status = data.status;
             Swal.fire({
               title: 'Movimiento guardado',
               text: `El movimiento fue guardado exitosamente.`,
               icon: 'success',
               confirmButtonText: 'Descargar Nombramiento',
-            }).then((result) => {
-              if (result.isConfirmed) {
-                //por terminar
-              }
-            });
+              showLoaderOnConfirm: true,
+              preConfirm: () => {
+                return new Promise((resolve) => {
+                  this.imprimir(dataInscrito.id, dataInscrito.rfc);
+                  setTimeout(() => {
+                    window.location.reload();
+                  }, 2000);
+                });
+              },
+            }).then((result) => {});
           },
           (error) => {
             Swal.fire({
               title: 'Error',
-              text: `Ocurrio un error al intentar guardar el movimiento, consulte a soporte. \n Error: ${error.status}`,
+              text: `Ocurrió un error al intentar guardar el movimiento, consulte a soporte. \n Error: ${error.status}`,
               icon: 'error',
             });
           }
@@ -110,7 +126,7 @@ export class FilaComponent implements OnInit {
       if (result.isDenied) {
         Swal.fire(
           'Movimiento denegado',
-          'Ocurrio un error al intentar guardar el movimiento',
+          'Ocurrió un error al intentar guardar el movimiento',
           'error'
         );
       }

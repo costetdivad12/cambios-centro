@@ -24,7 +24,6 @@ export class ServicioService {
   constructor(private http: HttpClient, public routers: Router) {}
 
   putNuevoMovimiento(movimiento) {
-    console.log(movimiento);
     const {
       idParticipanteBolsa,
       idParticipanteInscrito,
@@ -42,11 +41,17 @@ export class ServicioService {
       motivoE,
       plazas: plazasInscrito,
     };
-    console.log(JSON.stringify(movimientoPost));
     return this.http.post(
       `${this.urlApi}ccts/movimiento/save`,
       JSON.stringify(movimientoPost),
       httpOptions
+    );
+  }
+
+  patchRechazarMovimiento(idInscrito: number) {
+    return this.http.patch(
+      `${this.urlApi}/ccts/inscritos/rechazo/${idInscrito}`,
+      null
     );
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import Swal from 'sweetalert2';
 import { ServicioService } from '../../service/servicio.service';
 
@@ -18,6 +18,7 @@ export class FilaComponent implements OnInit {
   };
   dtOptions: any = {};
   @Input() listaBolsaCompatible = [];
+  @Output() onUpdateMap: EventEmitter<Array<Object>> = new EventEmitter();
   inscritosSinMovimiento: any[] = [];
 
   registrarMovimiento(dataInscrito, dataBolsa) {
@@ -132,13 +133,10 @@ export class FilaComponent implements OnInit {
       }
     });
   }
+  ngOnInit(): void {}
 
-  stopScroll() {
-    $('html, body').animate({
-      scrollTop: 0,
-    });
-  }
-  ngOnInit(): void {
-    this.stopScroll();
+  ver(info: any) {
+    // console.log("ver info ", info.latitud,info.longitud,info.ct);
+    this.onUpdateMap.emit(info);
   }
 }

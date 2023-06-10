@@ -1,7 +1,7 @@
 <div class="main-container">
-  <app-fila [listaBolsaCompatible]="listaBolsaCompatible" class="fila">
+  <app-fila [listaBolsaCompatible]="listaBolsaCompatible" class="fila" (onUpdateMap)="recibirInfoMap($event)">
   </app-fila>
   <div class="">
-    <app-mapa></app-mapa>
+    <app-mapa [info]="info"></app-mapa>
   </div>
 </div>

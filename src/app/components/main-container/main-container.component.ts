@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-main-container',
@@ -7,8 +7,18 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MainContainerComponent implements OnInit {
   @Input() listaBolsaCompatible = [];
+  info:any;
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  
+  recibirInfoMap(info:any){
+    console.log(info);
+    this.info = info;
+  }
+
+
+
 }

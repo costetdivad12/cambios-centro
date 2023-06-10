@@ -1,6 +1,13 @@
 <div class="lista-bolsa" id="lista-bolsa" name="lista-bolsa">
-  <div>
-    <select class="form-select" name="select-nivel" id="select-nivel">
+  <div style="position: sticky; top: 0; background-color: white">
+    <select
+      class="form-select"
+      name="idNivel"
+      id="idNivel"
+      [(ngModel)]="idNivel"
+      (change)="getBolsaPorNivel(idNivel)"
+    >
+      <option value="0">Seleccione nivel educativo</option>
       <option value="1">EDUCACIÓN PREESCOLAR</option>
       <option value="2">EDUCACIÓN PRIMARIA</option>
       <option value="3">SECUNDARIAS</option>
@@ -10,232 +17,46 @@
       <option value="7">EDUCACIÓN PARA ADULTOS</option>
       <option value="8">TELESECUNDARIAS</option>
       <option value="9">EDUCACIÓN FÍSICA</option>
-      <option value="10">PRIMARIA</option>
+      <option value="1">EDUCACIÓN INICIAL</option>
     </select>
     <h3>Lista de Centros de Trabajo disponibles</h3>
     <hr />
   </div>
   <div #tableContainer id="tableContainer" class="tableContainer">
     <table class="table">
-      <thead>
+      <thead style="position: sticky; top: 0; background-color: white">
         <tr>
-          <th scope="col">CCT</th>
-          <th scope="col">Nombre Escuela</th>
-          <th scope="col">Municipio</th>
-          <th scope="col">Categoria</th>
-          <th scope="col">Horas</th>
-          <th scope="col">Asignatura</th>
+          <th>Categoria</th>
+          <th>Asignatura</th>
+          <th>CCT</th>
+          <th>Nombre Escuela</th>
+          <th>Municipio</th>
+          <th>Calle</th>
+          <th>Horas</th>
+          <th>Horas Totales</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
-        <tr>
-          <td>CCT1</td>
-          <td>Nombre escuela</td>
-          <td>Municipio</td>
-          <td>Categoria</td>
-          <td>Jornada/NNH</td>
-          <td>Asignatura</td>
-        </tr>
+        <ng-container *ngFor="let bolsa of listaBolsa">
+          <ng-container *ngFor="let plaza of bolsa.plazas; let i = index">
+            <tr>
+              <td *ngIf="i === 0" [attr.rowspan]="bolsa.plazas.length">
+                {{ bolsa.plazas[0].categoria }}
+              </td>
+              <td *ngIf="i === 0" [attr.rowspan]="bolsa.plazas.length">
+                {{ bolsa.plazas[0].asignatura }}
+              </td>
+              <td>{{ plaza.ct }}</td>
+              <td>{{ plaza.nombre }}</td>
+              <td>{{ plaza.municipio }}</td>
+              <td>{{ plaza.calle }}</td>
+              <td>{{ plaza.horas === 0 ? "Jornada" : plaza.horas }}</td>
+              <td *ngIf="i === 0" [attr.rowspan]="bolsa.plazas.length">
+                {{ bolsa.horasTotales === 0 ? "Jornada" : bolsa.horasTotales }}
+              </td>
+            </tr>
+          </ng-container>
+        </ng-container>
       </tbody>
     </table>
   </div>

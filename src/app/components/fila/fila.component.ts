@@ -132,5 +132,13 @@ export class FilaComponent implements OnInit {
       }
     });
   }
-  ngOnInit(): void {}
+
+  stopScroll() {
+    $('html, body').animate({
+      scrollTop: 0,
+    });
+  }
+  ngOnInit(): void {
+    this.stopScroll();
+  }
 }

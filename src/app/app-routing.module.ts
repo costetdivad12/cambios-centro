@@ -10,6 +10,7 @@ import { ListamovimientosComponent } from './components/listamovimientos/listamo
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'lista-disponible', component: ListaBolsaComponent },
   { path: 'login', component: LoginComponent },
   { path: 'homeAdmin', component: AdminComponent, canActivate: [AdminGuard] },
   {
@@ -17,7 +18,6 @@ const routes: Routes = [
     component: ListainscritosComponent,
     canActivate: [ListaGuard],
   },
-  { path: 'lista-disponible', component: ListaBolsaComponent },
   {
     path: 'lista-conmovimiento',
     component: ListamovimientosComponent,

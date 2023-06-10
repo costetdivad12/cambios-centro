@@ -48,6 +48,12 @@ export class ServicioService {
     );
   }
 
+  getBolsaDisponibleByNivel(idNivel: number) {
+    return this.http
+      .get(`${this.urlApi}ccts/bolsa/lista/nivelEducativo/${idNivel}`)
+      .pipe(map((data) => data));
+  }
+
   patchRechazarMovimiento(idInscrito: number) {
     return this.http.patch(
       `${this.urlApi}/ccts/inscritos/rechazo/${idInscrito}`,

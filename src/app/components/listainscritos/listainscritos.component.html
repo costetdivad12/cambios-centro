@@ -29,7 +29,7 @@
           <h3>Lista de Participantes Inscritos</h3>
           <hr />
         </div>
-        <div #tableContainer id="tableContainer" class="tableContainer">
+        <div *ngIf="datos" #tableContainer id="tableContainer" class="tableContainer">
           <table class="table-responsive" >
             <thead>
               <tr>
@@ -38,6 +38,7 @@
                 <th scope="col">NOMBRE COMPLETO</th>
                 <th scope="col">NUMERO PRELACIÓN</th>
                 <th scope="col">DESCRIPCIÓN CATEGORIA</th>
+                <th scope="col">ASIGNATURA</th>
                 <th scope="col">ESTATUS</th>
               </tr>
             </thead>
@@ -49,6 +50,7 @@
                 <td>{{listaInscritos.nombre  }} {{listaInscritos.apellidoPaterno}} {{listaInscritos.apellidoMaterno}}</td>
                 <td>{{listaInscritos.numeroPrelacion}}</td>
                 <td>{{listaInscritos.plazas[0].descripcionCategoria}}</td>
+                <td>{{listaInscritos.plazas[0].asignatura}}</td>
                 <td *ngIf="listaInscritos.conMovimiento==false && listaInscritos.rechazo==false"><i class="fas fa-circle fa-lg" style="color: #c6cfae;"></i></td>        
                  <td *ngIf="listaInscritos.conMovimiento==true" ><i class="fas fa-circle fa-lg" style="color: #078158;"></i></td>
                  <td *ngIf="listaInscritos.rechazo==true" ><i class="fas fa-circle fa-lg" style="color: #ee2105;"></i></td>

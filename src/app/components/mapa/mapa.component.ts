@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild, OnChanges } from '@angular/core';
 import { MapsAPILoader } from "@agm/core";
 
 
@@ -7,21 +7,30 @@ import { MapsAPILoader } from "@agm/core";
   templateUrl: './mapa.component.html',
   styleUrls: ['./mapa.component.css'],
 })
-export class MapaComponent implements OnInit {
+export class MapaComponent implements OnInit,OnChanges {
   @ViewChild('mapa', { static: true }) mapaElement: ElementRef;
+  @Input() info:any;
  
   map: google.maps.Map;
   constructor(private mapsAPILoader: MapsAPILoader) {
     this.mapsAPILoader.load().then(() => {
-      this.cargarMapa('ESCUELA SECUNDARIA TECNICA NUM. 27','17DST0035Y',18.639465,-99.208196);
+
+      if(!this.info && this.info==undefined){
+        this.cargarMapa();
+      }
+      
     });
   }
-
-  ngOnInit(): void {
+  
+  ngOnChanges(changes: any) {
+      this.cargarMapa(changes?.info?.currentValue?.ct, changes?.info?.currentValue?.latitud, changes?.info?.currentValue?.longitud);
     
   }
 
-  cargarMapa( nombre:string,ct:string, lat:any,lng:any) {
+  ngOnInit(): void {
+  }
+
+  cargarMapa( ct?:string, lat?:any,lng?:any) {
     const latlon = new google.maps.LatLng(
       18.722644997763087,
       -99.09532312959755
@@ -59,6 +68,8 @@ export class MapaComponent implements OnInit {
     // });
 
     this.map = new google.maps.Map(this.mapaElement.nativeElement, mapOpcions);
+
+    
     // for (const lugar of lugares) {
       
 
@@ -70,13 +81,14 @@ export class MapaComponent implements OnInit {
         position: latlog,
       });
 
-      const title = '<h4>' + ct + '</h4>' + '<p>' + nombre + '</p>';
+      const title = '<h4>' + ct + '</h4>';
 
       const infowindow = new google.maps.InfoWindow({
         content: title,
       });
     
       marker.addListener("click", ()=>{
+        console.log('datos mapa',this.info);
         marker.setAnimation(google.maps.Animation.BOUNCE);
         infowindow.open(this.map,marker);
       });

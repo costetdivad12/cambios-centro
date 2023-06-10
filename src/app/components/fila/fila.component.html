@@ -15,7 +15,7 @@
     <tbody>
       <ng-container *ngFor="let bolsa of listaBolsaCompatible[0]">
         <ng-container *ngFor="let plaza of bolsa.plazas; let i = index">
-          <tr>
+          <tr (click)="ver(plaza)">
             <td *ngIf="i === 0" [attr.rowspan]="bolsa.plazas.length">
               {{ bolsa.plazas[0].categoria }}
             </td>

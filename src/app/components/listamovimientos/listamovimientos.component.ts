@@ -19,21 +19,7 @@ export class ListamovimientosComponent implements OnInit {
 
   }
 
-
-
-
-
   ngOnInit(): void {
-
-
-    // this.service.getConMovimiento().subscribe((resp)=>{
-
-    //   this.datos=resp;
-    //   console.log(this.datos);
-
-    //    });
-
-
     this.dtOptions = {
       ajax: (dataTablesParameters: any, callback) => {
         this.service.getConMovimiento().subscribe((resp) => {
@@ -116,7 +102,6 @@ export class ListamovimientosComponent implements OnInit {
     };
 
 
-    console.log('ultimo dato', this.datos, this.dtOptions);
 
 
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ServicioService } from '../service/servicio.service';
-import ResizeObserver from 'resize-observer-polyfill';
+
 
 declare var $: any;
 @Component({
@@ -9,7 +9,7 @@ declare var $: any;
   styleUrls: ['./lista-bolsa.component.css'],
 })
 export class ListaBolsaComponent implements OnInit {
-  constructor(private service: ServicioService, private host: ElementRef) {}
+  constructor(private service: ServicioService) {}
 
   listaBolsa: Array<Object> = [];
   idNivel = '0';

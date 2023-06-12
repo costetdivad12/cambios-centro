@@ -88,7 +88,7 @@ export class MapaComponent implements OnInit,OnChanges {
       });
     
       marker.addListener("click", ()=>{
-        console.log('datos mapa',this.info);
+        // console.log('datos mapa',this.info);
         marker.setAnimation(google.maps.Animation.BOUNCE);
         infowindow.open(this.map,marker);
       });

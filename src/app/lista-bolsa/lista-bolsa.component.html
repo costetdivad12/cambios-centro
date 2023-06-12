@@ -22,10 +22,16 @@
     <h3>Lista de Centros de Trabajo disponibles</h3>
     <hr />
   </div>
-  <div #tableContainer id="tableContainer" class="tableContainer">
+  <div
+    #tableContainer
+    id="tableContainer"
+    name="tableContainer"
+    class="tableContainer"
+  >
     <table class="table">
       <thead style="position: sticky; top: 0; background-color: white">
         <tr>
+          <th>id:</th>
           <th>Categoria</th>
           <th>Asignatura</th>
           <th>CCT</th>
@@ -40,6 +46,9 @@
         <ng-container *ngFor="let bolsa of listaBolsa">
           <ng-container *ngFor="let plaza of bolsa.plazas; let i = index">
             <tr>
+              <td *ngIf="i === 0" [attr.rowspan]="bolsa.plazas.length">
+                {{ bolsa.idSicamm }}
+              </td>
               <td *ngIf="i === 0" [attr.rowspan]="bolsa.plazas.length">
                 {{ bolsa.plazas[0].categoria }}
               </td>

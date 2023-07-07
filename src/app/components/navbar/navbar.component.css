@@ -1,0 +1,19 @@
+
+
+.boton {
+
+    /*background-color: #992A79 !important;*/
+    background: linear-gradient(to right, #c8399b, #9d2f7a) !important; 
+    color: floralwhite !important;
+}
+
+.form {
+    width: 50%;
+    max-width: 20px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  

@@ -1,80 +1,38 @@
 <!-- Navbar -->
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <!-- Container wrapper -->
+  <!-- Container wrapper -->  
   <div class="container-fluid" style="display: table">
-    <!-- Navbar brand -->
-    <a class="navbar-brand" href="#">SICCT - SCAMM</a>
-
-    <!-- Collapsible wrapper -->
+    <!-- Collapsible wrapper --> 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Left links -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="background-color: #e0e0f1; width: 1400px;" >
+           <!-- Navbar brand -->
+     <a class="navbar-brand">SICCT - SCAMM
+    </a>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/homeAdmin"
-            >Home</a
-          >
+          <a class="nav-link active" aria-current="page" href="/homeAdmin">Home</a>
         </li>
         <li class="nav-item">
           <a
             class="nav-link"
             aria-current="page"
+            
             routerLink="/lista-conmovimiento"
             >Movimientos</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="#" (click)="cerrar()"
+          <a class="nav-link" routerLink="#" (click)="cerrar()" 
             >Cerrar Sesión</a
           >
         </li>
       </ul>
-      <!-- Left links -->
-      <div
-        class="container-md"
-        style="text-align: center; margin: 0; padding: 0"
-      >
-        <h4>
-          <b>Nombre:</b> {{ participante.apellidoPaterno }}
-          {{ participante.apellidoMaterno }}
-          {{ participante.nombre }}
-        </h4>
-        <p>
-          <b>CURP: </b>{{ participante.curp }} <b>RFC: </b
-          >{{ participante.rfc }}
-        </p>
-        <p>
-          <b
-            >Total Horas:
-            {{
-              participante.horasTotales === 0
-                ? "Jornada"
-                : participante.horasTotales
-            }}</b
-          >
-        </p>
-        <div class="row">
-          <div class="col" style="display: flex; justify-content: center">
-            <p><b>Plazas:</b></p>
-            <ul style="display: table; margin: 0">
-              <li *ngFor="let plazas of participante.plazas">
-                {{ plazas.plaza }}
-              </li>
-            </ul>
-          </div>
-          <div class="col" style="display: flex; justify-content: center">
-            <p><b>CT</b></p>
-            <ul style="display: table; margin: 0">
-              <li *ngFor="let plazas of participante.plazas">
-                {{ plazas.ct }}
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    </div>
+    <br>
       <!-- Search form -->
       <div>
-        <form class="d-flex input-group" style="width: 500px; right: 20px">
+        <form class="d-flex input-group" style="width: 500px; left: 400px" >
           <select
             name="participante"
             [(ngModel)]="participante"
@@ -97,13 +55,95 @@
           </select>
           <br />
           <button
-            class="btn btn-danger"
+            class="btn boton"
             (click)="rechazarMovimiento(participante.id)"
           >
             Rechazar Cambio CT
           </button>
         </form>
-      </div>
+      </div><br />
+      <!-- Left links -->
+      <div
+        class="container-md"
+        style="text-align: center; margin: 0; padding: 0"    
+      >
+        <!--<h5>
+          <b>Nombre:</b> {{ participante.apellidoPaterno }}
+          {{ participante.apellidoMaterno }}
+          {{ participante.nombre }}
+          <b>CURP:</b>{{ participante.curp }} <b>RFC: </b
+            >{{ participante.rfc }}
+        </h5>-->
+        <div class="row">
+          <div class="col" style="display: flex; justify-content: center">
+            <p><b>Nombre:</b></p>
+            <ul style="display: table; margin: 0">
+              <li *ngFor="let plazas of participante.plazas">
+                {{ participante.apellidoPaterno }}
+             {{ participante.apellidoMaterno }}
+             {{ participante.nombre }}
+              </li>
+            </ul>
+          </div>
+          <div class="col" style="display: flex; justify-content: center">
+            <p><b>Curp:</b></p>
+            <ul style="display: table; margin: 0">
+              <li *ngFor="let plazas of participante.plazas">
+                {{ participante.curp }}
+              </li>
+            </ul>
+          </div>
+          <div class="col" style="display: flex; justify-content: center">
+            <p><b>RFC:</b></p>
+            <ul style="display: table; margin: 0">
+              <li *ngFor="let plazas of participante.plazas">
+                {{ participante.rfc }}
+              </li>
+            </ul>
+          </div>
+        </div>
+          
+      <!-- <p>
+          <b  
+            >Total Horas:
+            {{
+              participante.horasTotales === 0
+                ? "Jornada"
+                : participante.horasTotales
+            }}</b
+          >
+        </p>-->
+        <div class="row">
+          <div class="col" style="display: flex; justify-content: center">
+            <p><b>Plazas:</b></p>
+            <ul style="display: table; margin: 0">
+              <li *ngFor="let plazas of participante.plazas">
+                {{ plazas.plaza }}
+              </li>
+            </ul>
+          </div>
+          <div class="col" style="display: flex; justify-content: center">
+            <p><b>Total Horas:</b></p>
+            <ul style="display: table; margin: 0">
+              <li *ngFor="let plazas of participante.plazas">
+                {{
+                  participante.horasTotales === 0
+                    ? "Jornada"
+                    : participante.horasTotales
+                }}
+              </li>
+            </ul>
+          </div>
+          <div class="col" style="display: flex; justify-content: center">
+            <p><b>CT</b></p>
+            <ul style="display: table; margin: 0">
+              <li *ngFor="let plazas of participante.plazas">
+                {{ plazas.ct }}
+              </li>
+            </ul>
+          </div>
+        </div>
+     
     </div>
     <!-- Collapsible wrapper -->
   </div>

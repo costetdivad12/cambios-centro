@@ -1,10 +1,10 @@
+<body >
 <div
   class="d-flex justify-content-center"
   style="padding-top: 80px"
-  *ngIf="admin"
->
-  <div class="card text-center col-sm-6 borde">
-    <div class="card-header borde">Acceso a la plataforma Administrador</div>
+  *ngIf="admin">
+  <div class="card text-center col-sm-3.5 borde">
+    <div class="card-header"> <h1 class="title">Acceso Plataforma Administrador</h1></div>
     <div class="card-body">
       <form (ngSubmit)="ingresar()" #formInicio="ngForm">
         <div>
@@ -49,8 +49,7 @@
           <button
             type="submit"
             class="btn boton"
-            [disabled]="formInicio.status === 'INVALID'"
-          >
+            [disabled]="formInicio.status === 'INVALID'">
             Ingresar
           </button>
         </div>
@@ -59,6 +58,7 @@
     </div>
   </div>
 </div>
+</body>
 <!-- <div class="fixed-bottom">
     <br>
     <img src="./assets/logos/Pleca-SE-sinlogo.png" width="100%" class="img-fluid" height="10px">

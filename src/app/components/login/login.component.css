@@ -1,9 +1,39 @@
-.boton {
-    width: 200px !important;
-    background-color: #992A79 !important;
-    color: floralwhite !important;
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, #ffffff, #ffffff);
 }
 
 .borde {
-    border-color: #992A79 !important;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    text-align: center;
+    padding: 20px 25px;
+    box-shadow: 0 5px 10px rgba(135, 134, 187, 0.7);
+    /*border-color: #992A79 !important;*/    
+}
+
+.title {
+    color: #9f9fa0;
+    font-size: 25px;
+    font-weight: 750;
+    text-align: center
+}
+
+.boton {
+    width: 200px !important;
+    /*background-color: #992A79 !important;*/
+    background: linear-gradient(to right, #8786bb, #7a639e) !important; 
+    color: floralwhite !important;
+    font-weight: bold;
+   
+}
+
+.fas {
+    font-size: 25px;
+    color: #9d2f7a;
+    margin-right: 5px;
 }

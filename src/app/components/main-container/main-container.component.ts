@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-container',
@@ -7,18 +8,16 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class MainContainerComponent implements OnInit {
   @Input() listaBolsaCompatible = [];
-  info:any;
+  info: any;
 
-  constructor() {}
+  constructor(private router: Router) {}
+  currentRoute = this.router.url;
+  ngOnInit(): void {
+    console.log(this.currentRoute);
+  }
 
-  ngOnInit(): void {}
-
-  
-  recibirInfoMap(info:any){
+  recibirInfoMap(info: any) {
     console.log(info);
     this.info = info;
   }
-
-
-
 }

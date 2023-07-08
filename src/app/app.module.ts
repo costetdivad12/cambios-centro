@@ -15,6 +15,7 @@ import { ListainscritosComponent } from './components/listainscritos/listainscri
 import { ListamovimientosComponent } from './components/listamovimientos/listamovimientos.component';
 import { AgmCoreModule } from '@agm/core';
 import { DataTablesModule } from 'angular-datatables';
+import { FilaBolsaComponent } from './components/fila-bolsa/fila-bolsa.component';
 
 @NgModule({
   declarations: [
@@ -28,10 +29,11 @@ import { DataTablesModule } from 'angular-datatables';
     ListaBolsaComponent,
     ListainscritosComponent,
     ListamovimientosComponent,
+    FilaBolsaComponent,
   ],
   imports: [
     BrowserModule,
-    
+
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

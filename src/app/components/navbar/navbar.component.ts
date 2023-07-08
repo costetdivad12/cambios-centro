@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { ServicioService } from 'src/app/service/servicio.service';
 import Swal from 'sweetalert2';
 
@@ -10,7 +11,9 @@ declare var $: any;
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private service: ServicioService) {}
+  constructor(private service: ServicioService, private router: Router) {}
+
+  currentRoute = this.router.url;
   inscritosSinMovimiento: Array<Object> = [];
   participante: any = {};
 
@@ -54,10 +57,23 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getInscritosSinMovimiento().subscribe((resp: any) => {
-      this.inscritosSinMovimiento = resp;
-      this.refreshSelectPicker();
-    });
+    this.getInscritos();
+  }
+
+  getInscritos() {
+    if (this.currentRoute === '/homeAdmin') {
+      this.service.getInscritosSinMovimiento().subscribe((resp: any) => {
+        this.inscritosSinMovimiento = resp;
+        this.refreshSelectPicker();
+      });
+    } else if (this.currentRoute === '/homeAdminBolsa') {
+      this.service
+        .getInscritosSinMovimientoSiendoBolsa()
+        .subscribe((resp: any) => {
+          this.inscritosSinMovimiento = resp;
+          this.refreshSelectPicker();
+        });
+    }
   }
 
   ngAfterViewChecked(): void {}

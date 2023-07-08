@@ -1,0 +1,22 @@
+.container-filas {
+  margin: 5px;
+  width: inherit;
+  display: block;
+  overflow: auto;
+  max-height: 85vh;
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.swal-modal-size {
+  width: 950px !important;
+  background-color: red;
+}

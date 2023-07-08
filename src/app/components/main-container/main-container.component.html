@@ -1,6 +1,18 @@
 <div class="main-container">
-  <app-fila [listaBolsaCompatible]="listaBolsaCompatible" class="fila" (onUpdateMap)="recibirInfoMap($event)">
+  <app-fila
+    *ngIf="currentRoute === '/homeAdmin'"
+    [listaBolsaCompatible]="listaBolsaCompatible"
+    class="fila"
+    (onUpdateMap)="recibirInfoMap($event)"
+  >
   </app-fila>
+  <app-fila-bolsa
+    *ngIf="currentRoute === '/homeAdminBolsa'"
+    [listaBolsaCompatible]="listaBolsaCompatible"
+    class="fila"
+    (onUpdateMap)="recibirInfoMap($event)"
+  >
+  </app-fila-bolsa>
   <div class="">
     <app-mapa [info]="info"></app-mapa>
   </div>

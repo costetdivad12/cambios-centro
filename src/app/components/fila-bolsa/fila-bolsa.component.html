@@ -1,0 +1,45 @@
+<div class="container-filas">
+  <table class="table">
+    <thead style="position: sticky; top: 0; background-color: white">
+      <tr>
+        <th>Categoria</th>
+        <th>Asignatura</th>
+        <th>CCT</th>
+        <th>Nombre Escuela</th>
+        <th>Municipio</th>
+        <th>Horas</th>
+        <th>Total Horas</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let bolsa of listaBolsaCompatible[0]">
+        <ng-container *ngFor="let plaza of bolsa.plazas; let i = index">
+          <tr (click)="ver(plaza)" style="cursor: pointer">
+            <td *ngIf="i === 0" [attr.rowspan]="bolsa.plazas.length">
+              {{ bolsa.plazas[0].categoria }}
+            </td>
+            <td *ngIf="i === 0" [attr.rowspan]="bolsa.plazas.length">
+              {{ bolsa.plazas[0].asignatura }}
+            </td>
+            <td>{{ plaza.ct }}</td>
+            <td>{{ plaza.nombre }}</td>
+            <td>{{ plaza.municipio }}</td>
+            <td>{{ plaza.horas === 0 ? "Jornada" : plaza.horas }}</td>
+            <td *ngIf="i === 0" [attr.rowspan]="bolsa.plazas.length">
+              {{ bolsa.horasTotales === 0 ? "Jornada" : bolsa.horasTotales }}
+            </td>
+            <td *ngIf="i === 0" [attr.rowspan]="bolsa.plazas.length">
+              <button
+                class="btn btn-primary"
+                (click)="porRegistrarMovimiento(bolsa)"
+              >
+                Registrar
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

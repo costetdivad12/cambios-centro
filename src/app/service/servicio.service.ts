@@ -73,6 +73,12 @@ export class ServicioService {
       .pipe(map((data) => data));
   }
 
+  getInscritosSinMovimientoSiendoBolsa() {
+    return this.http
+      .get(`${this.urlApi}ccts/inscritos/lista/sinMovimiento/esBolsa`)
+      .pipe(map((data) => data));
+  }
+
   getInscritos(valor: number) {
     return this.http
       .get(

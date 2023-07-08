@@ -14,6 +14,11 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'homeAdmin', component: AdminComponent, canActivate: [AdminGuard] },
   {
+    path: 'homeAdminBolsa',
+    component: AdminComponent,
+    canActivate: [AdminGuard],
+  },
+  {
     path: 'homeLista',
     component: ListainscritosComponent,
     canActivate: [ListaGuard],
